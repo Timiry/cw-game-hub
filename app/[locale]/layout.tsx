@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
+import { StoreProvider } from '@/entities/app-state';
 import {notFound} from 'next/navigation';
 import {routing} from '@/shared/i18n/routing';
 import { getMessages } from "next-intl/server";
@@ -38,10 +39,12 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
-          <LocaleSwitcher />
-          {children}
-        </NextIntlClientProvider>
+        <StoreProvider>
+          <NextIntlClientProvider messages={messages}>
+            <LocaleSwitcher />
+            {children}
+          </NextIntlClientProvider>
+        </StoreProvider>
       </body>
     </html>
   );
