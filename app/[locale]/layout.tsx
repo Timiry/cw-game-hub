@@ -7,6 +7,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/shared/i18n/routing';
 import { getMessages } from "next-intl/server";
 import LocaleSwitcher from "@/shared/ui/LocaleSwitcher";
+import { QueryProvider } from "@/shared/lib/query/query-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,12 +40,14 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} antialiased`}
       >
-        <StoreProvider>
-          <NextIntlClientProvider messages={messages}>
-            <LocaleSwitcher />
-            {children}
-          </NextIntlClientProvider>
-        </StoreProvider>
+        <QueryProvider>
+          <StoreProvider>
+            <NextIntlClientProvider messages={messages}>
+              <LocaleSwitcher />
+              {children}
+            </NextIntlClientProvider>
+          </StoreProvider>
+        </QueryProvider>
       </body>
     </html>
   );
