@@ -1,13 +1,15 @@
 import { Metadata } from "next";
+import { useTranslations } from "next-intl";
 
 export const metadata: Metadata = {
   title: "Подтверждение email",
 }
 
 export default function ConfirmEmail() {
-  return (
-    <div className="font-sans grid items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      ConfirmEmail
-    </div>
-  );
+  const t = useTranslations("ConfirmEmailPage");
+    return (
+      <div>
+        {t("title")}
+      </div>
+    );
 }

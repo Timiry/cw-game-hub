@@ -1,0 +1,16 @@
+{
+  "LoginPage": {
+    "title": "Login"
+  },
+  "RegisterPage": {
+    "title": "Register"
+  },
+  "ConfirmEmailPage": {
+    "title": "Confirm email"
+  },
+  "ServerListPage": {
+    "loginLink": "Login",
+    "registerLink": "Register",
+    "confirmEmailLink": "Confirm email"
+  }
+}

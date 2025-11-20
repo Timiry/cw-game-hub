@@ -1,0 +1,16 @@
+{
+  "LoginPage": {
+    "title": "Войти"
+  },
+  "RegisterPage": {
+    "title": "Зарегистрироваться"
+  },
+  "ConfirmEmailPage": {
+    "title": "Подтвердить почту"
+  },
+  "ServerListPage": {
+    "loginLink": "Войти",
+    "registerLink": "Зарегистрироваться",
+    "confirmEmailLink": "Подтвердить почту"
+  }
+}
