@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { getFromLocalStorage, setToLocalStorage } from '@/shared/lib/storage/client-storage';
+import { isClient } from '@/shared/consts';
 
 const SERVERS_LOCALSTORAGE_ITEM_NAME = 'cwg:servers';
 
@@ -17,7 +18,7 @@ export class AppState {
 
   constructor() {
     makeAutoObservable(this);
-    if (typeof window !== 'undefined') {
+    if (isClient) {
       const saved = getFromLocalStorage(SERVERS_LOCALSTORAGE_ITEM_NAME);
       this.localServers = saved ? JSON.parse(saved) : [];
     }
