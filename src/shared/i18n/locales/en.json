@@ -1,4 +1,7 @@
 {
+  "Common": {
+    "description": ""
+  },
   "LoginPage": {
     "title": "Login"
   },
@@ -9,8 +12,23 @@
     "title": "Confirm email"
   },
   "ServerListPage": {
-    "loginLink": "Login",
-    "registerLink": "Register",
-    "confirmEmailLink": "Confirm email"
+    "title": "List of worlds",
+    "externalId": "External ID: {id}",
+    "notAuthorized": "You are not authorized. To start playing,",
+    "loginLink": "log in to your account",
+    "genericError": "Something went wrong. Unable to enter the game, please try again later",
+    "emailNotConfirmed": "Email is not confirmed. Confirm it to get full access to the site’s functionality.",
+    "confirmEmailLink": "Click to confirm",
+    "worldsTitle": "Worlds",
+    "addWorldManually": "Add world manually",
+    "worldAddress": "World address",
+    "addButton": "Add",
+    "cancelButton": "Cancel",
+    "noWorldsFound": "No worlds found :(",
+    "addWorldPrompt": "Add a world?",
+    "failedToFetch": "Failed to fetch world list. Please try again later",
+    "accessDenied": "Access denied. Unable to enter the world",
+    "deleteButton": "Delete",
+    "onlinePlayers": "The number of active characters in the world"
   }
 }
