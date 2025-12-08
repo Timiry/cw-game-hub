@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Metadata } from "next";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import { StoreProvider } from '@/entities/app-state';
 import {notFound} from 'next/navigation';
@@ -9,18 +10,12 @@ import { ThemeProvider, CssBaseline } from "@cw-game/react-ui";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import "@cw-game/react-ui/neucha";
 import LocaleSwitcher from "@/shared/ui/LocaleSwitcher";
-import { getTranslations } from 'next-intl/server';
 
-export async function generateMetadata() {
-  const t = await getTranslations("Common");
-
-  return {
-    title: {
-      template: "%s - CW Game Hub",
-      default: "CW Game Hub"
-    },
-    description: t("description"),
-  };
+export const metadata: Metadata = {
+  title: {
+    template: "%s - CW Game Hub",
+    default: "CW Game Hub"
+  },
 }
 
 export default async function RootLayout({

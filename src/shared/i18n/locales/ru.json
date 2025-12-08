@@ -1,7 +1,4 @@
 {
-  "Common": {
-    "description": ""
-  },
   "LoginPage": {
     "title": "Войти"
   },
@@ -13,6 +10,7 @@
   },
   "ServerListPage": {
     "title": "Список миров",
+    "description": "Захватывающая игра про котиков",
     "externalId": "Внешний ID: {id}",
     "notAuthorized": "Вы не авторизованы. Чтобы начать играть,",
     "loginLink": "войдите в аккаунт",

@@ -1,7 +1,4 @@
 {
-  "Common": {
-    "description": ""
-  },
   "LoginPage": {
     "title": "Login"
   },
@@ -13,6 +10,7 @@
   },
   "ServerListPage": {
     "title": "List of worlds",
+    "description": "Exciting game about cats",
     "externalId": "External ID: {id}",
     "notAuthorized": "You are not authorized. To start playing,",
     "loginLink": "log in to your account",
