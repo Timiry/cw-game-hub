@@ -5,9 +5,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/shared/i18n/routing';
 import { getMessages } from "next-intl/server";
 import { QueryProvider } from "@/shared/lib/query/query-provider";
-// import { ThemeProvider, CssBaseline } from "@cw-game/react-ui";
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import theme from "@/shared/ui/theme";
+import { ThemeProvider, CssBaseline } from "@cw-game/react-ui";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import "@cw-game/react-ui/neucha";
 import LocaleSwitcher from "@/shared/ui/LocaleSwitcher";
@@ -45,7 +43,7 @@ export default async function RootLayout({
           <QueryProvider>
             <StoreProvider>
                 <NextIntlClientProvider messages={messages}>
-                  <ThemeProvider theme={theme}>
+                  <ThemeProvider>
                     <CssBaseline />
                     <LocaleSwitcher />
                     {children}
