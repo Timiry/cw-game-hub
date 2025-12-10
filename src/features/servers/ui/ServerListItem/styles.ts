@@ -2,7 +2,7 @@ import { stylesToColorSvg } from "@cw-game/react-ui";
 import { styled } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import { BlockIcon, DisconnectIcon, RunningCatIcon } from "../icons";
+import { BlockIcon, DisconnectIcon, RunningCatIcon } from "@/shared/ui/icons";
 
 export const Container = styled(Paper)(({ theme }) => ({
   padding: "12px",

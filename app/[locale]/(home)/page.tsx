@@ -21,4 +21,4 @@ export async function generateMetadata() {
   };
 }
 
-export { default } from "@/features/servers/page";
+export { default } from "@/pages/servers";

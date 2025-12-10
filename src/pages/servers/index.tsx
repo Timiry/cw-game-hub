@@ -11,14 +11,14 @@ import { useTranslations } from "next-intl";
 import { useStore } from "@/entities/app-state";
 import routes from "@/shared/config/routes";
 import { useUserProfile } from "@/entities/profile";
-import useServerList from "./lib/hooks/useServerList";
+import useServerList from "@/features/servers/lib/hooks/useServerList";
 import CardLayout from "@/shared/ui/CardLayout";
-import { AddIcon } from "./ui/icons";
+import { AddIcon } from "@/shared/ui/icons";
 
-import FailedToFetchServers from "./ui/FailedToFetchServers";
-import ServerListItem from "./ui/ServerListItem";
-import EmptyServerList from "./ui/EmptyServerList";
-import AddLocalServer from "./ui/AddLocalServer";
+import FailedToFetchServers from "@/features/servers/ui/FailedToFetchServers";
+import ServerListItem from "@/features/servers/ui/ServerListItem";
+import EmptyServerList from "@/features/servers/ui/EmptyServerList";
+import AddLocalServer from "@/features/servers/ui/AddLocalServer";
 
 const ServerListPage = observer(() => {
   const store = useStore();

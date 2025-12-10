@@ -5,7 +5,7 @@ import { StoreProvider } from "@/entities/app-state";
 import { notFound } from "next/navigation";
 import { routing } from "@/shared/i18n/routing";
 import { getMessages } from "next-intl/server";
-import { QueryProvider } from "@/shared/lib/query/query-provider";
+import { QueryProvider } from "@/shared/lib/react-query/query-provider";
 import { ThemeProvider, CssBaseline } from "@cw-game/react-ui";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "@cw-game/react-ui/neucha";

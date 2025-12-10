@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import { useTranslations } from "next-intl";
 
 import useServerInfo from "../../lib/hooks/useServerInfo";
-import { NetworkLoader } from "../icons";
+import { NetworkLoader } from "@/shared/ui/icons";
 import {
   Container,
   NetworkLoaderContainer,
