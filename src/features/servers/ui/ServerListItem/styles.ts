@@ -32,5 +32,5 @@ export const StyledRunningCatIcon = styled(RunningCatIcon)(({ theme }) => ({
 export const StyledBlockIcon = styled(BlockIcon)(({ theme }) => ({
   width: "24px",
   height: "24px",
-  fill: theme.palette.error.main
+  fill: theme.palette.error.main,
 }));

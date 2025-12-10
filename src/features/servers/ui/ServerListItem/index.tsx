@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Button, Typography } from "@cw-game/react-ui";
 import Grid from "@mui/material/Grid";
@@ -118,7 +118,7 @@ const ServerListItem = ({
             </Grid>
           </Grid>
         </Grid>
-        <Grid alignSelf="flex-end" onClick={(e) => e.stopPropagation()}>
+        <Grid alignSelf="flex-end" onClick={e => e.stopPropagation()}>
           {onDelete && (
             <Button variant="text" size="small" onClick={onDelete}>
               {t("deleteButton")}

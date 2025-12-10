@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { observer } from "mobx-react-lite";
@@ -30,15 +30,10 @@ const ServerListPage = observer(() => {
     isLoading: isUserProfileLoading,
     isError: isUserProfileError,
   } = useUserProfile();
-  const {
-    data: servers,
-    isLoading: isLoadingServers,
-    isError: isServersError,
-  } = useServerList();
+  const { data: servers, isLoading: isLoadingServers, isError: isServersError } = useServerList();
   const [isOpenAddLocalServer, setOpenAddLocalServer] = useState(false);
 
-  const isServerListEmpty =
-    servers?.length === 0 && store?.appState.localServers.length === 0;
+  const isServerListEmpty = servers?.length === 0 && store?.appState.localServers.length === 0;
 
   const emailNotConfirmed = user?.data !== undefined && !user.data.confirmed;
 
@@ -63,7 +58,7 @@ const ServerListPage = observer(() => {
           right="0px"
           color="text.secondary"
         >
-          { t("externalId", {id: user.data.id}) }
+          {t("externalId", { id: user.data.id })}
         </Typography>
       )}
 
@@ -104,22 +99,16 @@ const ServerListPage = observer(() => {
           <Typography variant="h6">{t("worldsTitle")}</Typography>
         </Grid>
         <Grid display="flex" alignContent="center">
-          <IconButton
-            size="small"
-            onClick={() => setOpenAddLocalServer((prev) => !prev)}
-          >
+          <IconButton size="small" onClick={() => setOpenAddLocalServer(prev => !prev)}>
             <AddIcon />
           </IconButton>
         </Grid>
       </Grid>
-      <AddLocalServer
-        open={isOpenAddLocalServer}
-        onClose={() => setOpenAddLocalServer(false)}
-      />
+      <AddLocalServer open={isOpenAddLocalServer} onClose={() => setOpenAddLocalServer(false)} />
       {isServersError && <FailedToFetchServers />}
       {isServerListEmpty && <EmptyServerList onLink={openAddLocalServer} />}
       <Grid container direction="column" rowSpacing="8px" pt="16px">
-        {store?.appState.localServers.map((address) => (
+        {store?.appState.localServers.map(address => (
           <Grid key={address}>
             <ServerListItem
               origin={address}
@@ -128,7 +117,7 @@ const ServerListPage = observer(() => {
             />
           </Grid>
         ))}
-        {servers?.map((server) => (
+        {servers?.map(server => (
           <Grid key={server.id}>
             <ServerListItem
               origin={server.address}

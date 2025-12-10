@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { PropsWithChildren } from "react";
-import { createContext, useContext } from 'react';
-import { useState, useEffect } from 'react';
-import { AppState } from './model';
+import type { PropsWithChildren } from "react";
+import { createContext, useContext } from "react";
+import { useState, useEffect } from "react";
+import { AppState } from "./model";
 
 export type AppStore = {
   appState: AppState;
@@ -16,12 +16,11 @@ export const StoreProvider = (props: PropsWithChildren) => {
 
   useEffect(() => {
     const appState = new AppState();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStore({ appState });
   }, []);
 
-  return (
-    <StoreContext.Provider value={store} {...props} />
-  );
+  return <StoreContext.Provider value={store} {...props} />;
 };
 
 export const useStore = () => {
@@ -31,8 +30,9 @@ export const useStore = () => {
 
 export const useSnackbar = () => {
   const store = useStore();
-  if (store) return [
-    store.appState.openSnackbar.bind(store.appState),
-    store.appState.closeSnackbar.bind(store.appState)
-  ] as const;
+  if (store)
+    return [
+      store.appState.openSnackbar.bind(store.appState),
+      store.appState.closeSnackbar.bind(store.appState),
+    ] as const;
 };

@@ -1,4 +1,4 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
   const t = await getTranslations("ServerListPage");
@@ -16,7 +16,7 @@ export async function generateMetadata() {
       title: "CW Game Hub",
       description: t("description"),
       images: ["/public/og/og-image.png"],
-      type: 'website',
+      type: "website",
     },
   };
 }

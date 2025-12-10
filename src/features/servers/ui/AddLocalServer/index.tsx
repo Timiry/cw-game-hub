@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
-import { FormEvent, useState } from "react";
+import type { FormEvent } from "react";
+import { useState } from "react";
 import { Button, Input, Typography } from "@cw-game/react-ui";
 import Collapse from "@mui/material/Collapse";
 import Grid from "@mui/material/Grid";
@@ -36,7 +37,7 @@ const AddLocalServer = ({ open, onClose }: AddLocalServerProps) => {
               <Input
                 name="url"
                 value={value}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={e => setValue(e.target.value)}
                 placeholder="https://cw-game.ru"
                 size="small"
                 fullWidth

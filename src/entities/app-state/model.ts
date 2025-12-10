@@ -1,12 +1,12 @@
-import { makeAutoObservable } from 'mobx';
-import { getFromLocalStorage, setToLocalStorage } from '@/shared/lib/storage/client-storage';
-import { isClient } from '@/shared/consts';
+import { makeAutoObservable } from "mobx";
+import { getFromLocalStorage, setToLocalStorage } from "@/shared/lib/storage/client-storage";
+import { isClient } from "@/shared/consts";
 
-const SERVERS_LOCALSTORAGE_ITEM_NAME = 'cwg:servers';
+const SERVERS_LOCALSTORAGE_ITEM_NAME = "cwg:servers";
 
 export interface SnackbarOptions {
   open: boolean;
-  severity?: 'error' | 'success';
+  severity?: "error" | "success";
   message?: string;
   action?: string;
   onAction?: () => void;
@@ -35,10 +35,10 @@ export class AppState {
     setToLocalStorage(SERVERS_LOCALSTORAGE_ITEM_NAME, JSON.stringify(this.localServers));
   }
 
-  openSnackbar(options: Omit<SnackbarOptions, 'open'> & { message: string }) {
+  openSnackbar(options: Omit<SnackbarOptions, "open"> & { message: string }) {
     this.snackbar = {
       open: true,
-      severity: options.severity || 'error',
+      severity: options.severity || "error",
       message: options.message,
       action: options.action,
       onAction: options.onAction,

@@ -1,10 +1,10 @@
-import { HubError } from '@/shared/lib/api/HubError';
+import { HubError } from "@/shared/lib/api/HubError";
 
 const BASE_INIT: RequestInit = {
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
-  credentials: 'include',
+  credentials: "include",
 };
 
 async function parseErrorResponse(response: Response) {
@@ -26,10 +26,10 @@ async function handleResponse<T>(response: Response): Promise<T> {
   }
 
   try {
-      return await response.json();
-    } catch {
-      return Promise.resolve() as Promise<T>;
-    }
+    return await response.json();
+  } catch {
+    return Promise.resolve() as Promise<T>;
+  }
 }
 
 const api = {
@@ -41,7 +41,7 @@ const api = {
   async post<T, U = unknown>(url: string, data: U): Promise<T> {
     const response = await fetch(url, {
       ...BASE_INIT,
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(data),
     });
     return handleResponse<T>(response);

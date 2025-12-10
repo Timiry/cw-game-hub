@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
@@ -14,9 +14,9 @@ const FailedToFetchServers = () => {
       height="96px"
       textAlign="center"
     >
-        <Typography variant="body1" color="error.main">
-          {t("failedToFetch")}
-        </Typography>
+      <Typography variant="body1" color="error.main">
+        {t("failedToFetch")}
+      </Typography>
     </Box>
   );
 };
