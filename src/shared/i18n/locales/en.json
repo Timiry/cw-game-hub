@@ -1,6 +1,12 @@
 {
   "LoginPage": {
-    "title": "Login"
+    "title": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "loginButton": "Log In",
+    "noAccount": "Don’t have an account?",
+    "registerLink": "Sign up!",
+    "error": "Something went wrong. Please try again."
   },
   "RegisterPage": {
     "title": "Register"

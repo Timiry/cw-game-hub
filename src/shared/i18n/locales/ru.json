@@ -1,6 +1,12 @@
 {
   "LoginPage": {
-    "title": "Войти"
+    "title": "Вход",
+    "emailPlaceholder": "Электронная почта",
+    "passwordPlaceholder": "Пароль",
+    "loginButton": "Войти",
+    "noAccount": "Нет аккаунта?",
+    "registerLink": "Зарегистрируйтесь!",
+    "error": "Что-то пошло не так. Попробуйте снова."
   },
   "RegisterPage": {
     "title": "Зарегистрироваться"

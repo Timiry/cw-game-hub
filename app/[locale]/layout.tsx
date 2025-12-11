@@ -1,4 +1,3 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { StoreProvider } from "@/entities/app-state";

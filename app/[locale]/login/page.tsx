@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Вход",
-};
+export async function generateMetadata() {
+  const t = await getTranslations("LoginPage");
 
-export default function Login() {
-  const t = useTranslations("LoginPage");
-  return <div>{t("title")}</div>;
+  return {
+    title: t("title"),
+  };
 }
+
+export { default } from "@/pages/login";
