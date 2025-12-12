@@ -1,3 +1,4 @@
+import { isClient } from "@/shared/consts";
 import { QueryClient } from "@tanstack/react-query";
 
 function makeQueryClient() {
@@ -14,7 +15,7 @@ function makeQueryClient() {
 let browserQueryClient: QueryClient;
 
 export function getQueryClient() {
-  if (typeof window === "undefined") {
+  if (!isClient) {
     // Сервер: новый клиент для каждого запроса
     return makeQueryClient();
   } else {

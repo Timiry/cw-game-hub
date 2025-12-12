@@ -13,7 +13,10 @@ const API_URL = process.env.NEXT_PUBLIC_ACCOUNTS_URL;
 
 class AuthService {
   static async login(body: unknown) {
-    return api.post<{ data: UserProfile }>(API_URL + accountsEndpoints.login, body);
+    return api.post<{ data: UserProfile }>(
+      API_URL + accountsEndpoints.login,
+      body
+    );
   }
 
   static async register(body: RegisterBody) {
@@ -26,7 +29,9 @@ class AuthService {
 
   static async verifyEmail(params: { code: string }) {
     const searchParams = new URLSearchParams(params);
-    return api.get(API_URL + accountsEndpoints.email.verify + "?" + searchParams);
+    return api.get(
+      API_URL + accountsEndpoints.email.verify + "?" + searchParams
+    );
   }
 }
 

@@ -3,7 +3,13 @@
 import { Controller, useForm } from "react-hook-form";
 import useLogin from "../../features/auth/lib/hooks/useLogin";
 import CardLayout from "@/shared/ui/CardLayout";
-import { Button, FullscreenLoader, Input, Link, Typography } from "@cw-game/react-ui";
+import {
+  Button,
+  FullscreenLoader,
+  Input,
+  Link,
+  Typography,
+} from "@cw-game/react-ui";
 import { postSuccessAuthMessage } from "../../features/auth/lib/utils/postMessages";
 import routes from "@/shared/config/routes";
 import NextLink from "next/link";
@@ -52,7 +58,12 @@ export const LoginPage = () => {
             control={control}
             name="email"
             render={({ field }) => (
-              <Input {...field} variant="filled" placeholder={t("emailPlaceholder")} fullWidth />
+              <Input
+                {...field}
+                variant="filled"
+                placeholder={t("emailPlaceholder")}
+                fullWidth
+              />
             )}
           />
         </Grid>
@@ -83,7 +94,11 @@ export const LoginPage = () => {
           <Typography variant="caption">
             {t("noAccount")}{" "}
             <Link component={NextLink} href={routes.register}>
-              <Typography component="span" variant="caption" color="success.main">
+              <Typography
+                component="span"
+                variant="caption"
+                color="success.main"
+              >
                 {t("registerLink")}
               </Typography>
             </Link>

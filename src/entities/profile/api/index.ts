@@ -6,7 +6,9 @@ const API_URL = process.env.NEXT_PUBLIC_ACCOUNTS_URL;
 
 class ProfileService {
   static async getUserProfile() {
-    return api.get<{ data: UserProfile }>(API_URL + accountsEndpoints.userProfile);
+    return api.get<{ data: UserProfile }>(
+      API_URL + accountsEndpoints.userProfile
+    );
   }
 }
 

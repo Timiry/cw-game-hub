@@ -42,7 +42,7 @@ const TelegramLoginButton = ({ onLogin }: TelegramLoginButtonProps) => {
       borderRadius="20px"
       height="40px"
       width="204px"
-      boxShadow={theme => theme.shadows[3]}
+      boxShadow={(theme) => theme.shadows[3]}
       bgcolor="#54a9eb"
       display="flex"
       justifyContent="center"

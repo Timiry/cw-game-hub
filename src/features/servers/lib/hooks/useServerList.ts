@@ -5,7 +5,8 @@ import { QueryKeys } from "@/shared/lib/api/QueryKeys";
 export const useServerList = () => {
   return useQuery({
     queryKey: [QueryKeys.ServerList],
-    queryFn: () => ServersService.getServerList().then(res => res.data.content),
+    queryFn: () =>
+      ServersService.getServerList().then((res) => res.data.content),
   });
 };
 

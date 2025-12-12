@@ -1,5 +1,8 @@
 import { makeAutoObservable } from "mobx";
-import { getFromLocalStorage, setToLocalStorage } from "@/shared/lib/storage/client-storage";
+import {
+  getFromLocalStorage,
+  setToLocalStorage,
+} from "@/shared/lib/storage/client-storage";
 import { isClient } from "@/shared/consts";
 
 const SERVERS_LOCALSTORAGE_ITEM_NAME = "cwg:servers";
@@ -27,12 +30,18 @@ export class AppState {
   addLocalServer(address: string) {
     if (this.localServers.includes(address)) return;
     this.localServers.unshift(address);
-    setToLocalStorage(SERVERS_LOCALSTORAGE_ITEM_NAME, JSON.stringify(this.localServers));
+    setToLocalStorage(
+      SERVERS_LOCALSTORAGE_ITEM_NAME,
+      JSON.stringify(this.localServers)
+    );
   }
 
   deleteLocalServer(address: string) {
-    this.localServers = this.localServers.filter(s => s !== address);
-    setToLocalStorage(SERVERS_LOCALSTORAGE_ITEM_NAME, JSON.stringify(this.localServers));
+    this.localServers = this.localServers.filter((s) => s !== address);
+    setToLocalStorage(
+      SERVERS_LOCALSTORAGE_ITEM_NAME,
+      JSON.stringify(this.localServers)
+    );
   }
 
   openSnackbar(options: Omit<SnackbarOptions, "open"> & { message: string }) {

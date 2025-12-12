@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import type { SVGProps } from 'react';
+import type { SVGProps } from "react";
 
 export const AddIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg

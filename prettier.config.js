@@ -3,11 +3,11 @@ const prettierConfig = {
   semi: true,
   trailingComma: "es5",
   singleQuote: false,
-  printWidth: 100,
+  printWidth: 80,
   tabWidth: 2,
   useTabs: false,
   bracketSpacing: true,
-  arrowParens: "avoid",
+  arrowParens: "always",
   endOfLine: "lf",
 };
 

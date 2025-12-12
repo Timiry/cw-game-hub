@@ -4,7 +4,10 @@ import { QueryKeys } from "@/shared/lib/api/QueryKeys";
 import type { HubError } from "@/shared/lib/api/HubError";
 
 export const useUserProfile = () => {
-  return useQuery<Awaited<ReturnType<typeof ProfileService.getUserProfile>>, HubError>({
+  return useQuery<
+    Awaited<ReturnType<typeof ProfileService.getUserProfile>>,
+    HubError
+  >({
     queryKey: [QueryKeys.UserProfile],
     queryFn: ProfileService.getUserProfile,
   });

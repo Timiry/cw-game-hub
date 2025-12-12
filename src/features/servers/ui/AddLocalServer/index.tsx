@@ -37,7 +37,7 @@ const AddLocalServer = ({ open, onClose }: AddLocalServerProps) => {
               <Input
                 name="url"
                 value={value}
-                onChange={e => setValue(e.target.value)}
+                onChange={(e) => setValue(e.target.value)}
                 placeholder="https://cw-game.ru"
                 size="small"
                 fullWidth

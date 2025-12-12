@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint-and-format": "npm run lint:fix && npm run format"
   },
   "dependencies": {
     "@cw-game/react-ui": "^1.0.4",
