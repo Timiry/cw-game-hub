@@ -9,7 +9,11 @@
     "error": "Something went wrong. Please try again."
   },
   "RegisterPage": {
-    "title": "Register"
+    "title": "Register",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "registerButton": "Sign Up",
+    "error": "Something went wrong. Please try again."
   },
   "ConfirmEmailPage": {
     "title": "Confirm email"

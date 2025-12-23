@@ -9,7 +9,11 @@
     "error": "Что-то пошло не так. Попробуйте снова."
   },
   "RegisterPage": {
-    "title": "Зарегистрироваться"
+    "title": "Зарегистрироваться",
+    "emailPlaceholder": "Электронная почта",
+    "passwordPlaceholder": "Пароль",
+    "registerButton": "Зарегистрироваться",
+    "error": "Что-то пошло не так. Попробуйте снова."
   },
   "ConfirmEmailPage": {
     "title": "Подтвердить почту"
