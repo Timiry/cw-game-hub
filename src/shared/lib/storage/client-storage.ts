@@ -1,4 +1,4 @@
-export const isClient = typeof window !== 'undefined';
+import { isClient } from "@/shared/consts";
 
 export const getFromLocalStorage = (key: string): string | null => {
   if (!isClient) return null;

@@ -1,11 +1,15 @@
-import { makeAutoObservable } from 'mobx';
-import { getFromLocalStorage, setToLocalStorage } from '@/shared/lib/storage/client-storage';
+import { makeAutoObservable } from "mobx";
+import {
+  getFromLocalStorage,
+  setToLocalStorage,
+} from "@/shared/lib/storage/client-storage";
+import { isClient } from "@/shared/consts";
 
-const SERVERS_LOCALSTORAGE_ITEM_NAME = 'cwg:servers';
+const SERVERS_LOCALSTORAGE_ITEM_NAME = "cwg:servers";
 
 export interface SnackbarOptions {
   open: boolean;
-  severity?: 'error' | 'success';
+  severity?: "error" | "success";
   message?: string;
   action?: string;
   onAction?: () => void;
@@ -17,7 +21,7 @@ export class AppState {
 
   constructor() {
     makeAutoObservable(this);
-    if (typeof window !== 'undefined') {
+    if (isClient) {
       const saved = getFromLocalStorage(SERVERS_LOCALSTORAGE_ITEM_NAME);
       this.localServers = saved ? JSON.parse(saved) : [];
     }
@@ -26,18 +30,24 @@ export class AppState {
   addLocalServer(address: string) {
     if (this.localServers.includes(address)) return;
     this.localServers.unshift(address);
-    setToLocalStorage(SERVERS_LOCALSTORAGE_ITEM_NAME, JSON.stringify(this.localServers));
+    setToLocalStorage(
+      SERVERS_LOCALSTORAGE_ITEM_NAME,
+      JSON.stringify(this.localServers)
+    );
   }
 
   deleteLocalServer(address: string) {
-    this.localServers = this.localServers.filter(s => s !== address);
-    setToLocalStorage(SERVERS_LOCALSTORAGE_ITEM_NAME, JSON.stringify(this.localServers));
+    this.localServers = this.localServers.filter((s) => s !== address);
+    setToLocalStorage(
+      SERVERS_LOCALSTORAGE_ITEM_NAME,
+      JSON.stringify(this.localServers)
+    );
   }
 
-  openSnackbar(options: Omit<SnackbarOptions, 'open'> & { message: string }) {
+  openSnackbar(options: Omit<SnackbarOptions, "open"> & { message: string }) {
     this.snackbar = {
       open: true,
-      severity: options.severity || 'error',
+      severity: options.severity || "error",
       message: options.message,
       action: options.action,
       onAction: options.onAction,

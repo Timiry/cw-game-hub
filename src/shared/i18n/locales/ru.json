@@ -1,6 +1,12 @@
 {
   "LoginPage": {
-    "title": "Войти"
+    "title": "Вход",
+    "emailPlaceholder": "Электронная почта",
+    "passwordPlaceholder": "Пароль",
+    "loginButton": "Войти",
+    "noAccount": "Нет аккаунта?",
+    "registerLink": "Зарегистрируйтесь!",
+    "error": "Что-то пошло не так. Попробуйте снова."
   },
   "RegisterPage": {
     "title": "Зарегистрироваться"
@@ -9,8 +15,24 @@
     "title": "Подтвердить почту"
   },
   "ServerListPage": {
-    "loginLink": "Войти",
-    "registerLink": "Зарегистрироваться",
-    "confirmEmailLink": "Подтвердить почту"
+    "title": "Список миров",
+    "description": "Захватывающая игра про котиков",
+    "externalId": "Внешний ID: {id}",
+    "notAuthorized": "Вы не авторизованы. Чтобы начать играть,",
+    "loginLink": "войдите в аккаунт",
+    "genericError": "Что-то пошло не так. Невозможно зайти в игру, попробуйте позже",
+    "emailNotConfirmed": "Электронная почта не подтверждена. Подтвердите её, чтобы иметь полный доступ к функционалу сайта.",
+    "confirmEmailLink": "Нажмите, чтобы подтвердить",
+    "worldsTitle": "Миры",
+    "addWorldManually": "Добавить мир вручную",
+    "worldAddress": "Адрес мира",
+    "addButton": "Добавить",
+    "cancelButton": "Отмена",
+    "noWorldsFound": "Не найдено доступных миров :(",
+    "addWorldPrompt": "Добавить мир?",
+    "failedToFetch": "Не удалось получить список миров. Попробуйте позже",
+    "accessDenied": "Доступ ограничен. Невозможно зайти в мир",
+    "deleteButton": "Удалить",
+    "onlinePlayers": "Количество активных персонажей в мире"
   }
 }
