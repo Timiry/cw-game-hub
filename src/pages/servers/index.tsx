@@ -38,7 +38,7 @@ const ServerListPage = observer(() => {
   const [isOpenAddLocalServer, setOpenAddLocalServer] = useState(false);
 
   const isServerListEmpty =
-    servers?.length === 0 && store?.appState.localServers.length === 0;
+    servers?.length === 0 && store.localServers.length === 0;
 
   const emailNotConfirmed = user?.data !== undefined && !user.data.confirmed;
 
@@ -119,12 +119,12 @@ const ServerListPage = observer(() => {
       {isServersError && <FailedToFetchServers />}
       {isServerListEmpty && <EmptyServerList onLink={openAddLocalServer} />}
       <Grid container direction="column" rowSpacing="8px" pt="16px">
-        {store?.appState.localServers.map((address) => (
+        {store.localServers.map((address) => (
           <Grid key={address}>
             <ServerListItem
               origin={address}
               forbidden={user === undefined || emailNotConfirmed}
-              onDelete={() => store.appState.deleteLocalServer(address)}
+              onDelete={() => store.deleteLocalServer(address)}
             />
           </Grid>
         ))}

@@ -22,7 +22,7 @@ const AddLocalServer = ({ open, onClose }: AddLocalServerProps) => {
 
   const addServer = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    store?.appState.addLocalServer(value);
+    store.addLocalServer(value);
     onClose();
   };
 
