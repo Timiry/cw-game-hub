@@ -1,3 +1,4 @@
+import routes from "@/shared/config/routes";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
@@ -5,6 +6,12 @@ export async function generateMetadata() {
 
   return {
     title: t("title"),
+    alternates: {
+      languages: {
+        en: "/en" + routes.confirmEmail,
+        ru: routes.confirmEmail,
+      },
+    },
   };
 }
 

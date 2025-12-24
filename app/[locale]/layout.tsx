@@ -12,6 +12,7 @@ import LocaleSwitcher from "@/shared/ui/LocaleSwitcher";
 import Snackbar from "@/shared/ui/Snackbar";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cw-game.ru"),
   title: {
     template: "%s - CW Game Hub",
     default: "CW Game Hub",
