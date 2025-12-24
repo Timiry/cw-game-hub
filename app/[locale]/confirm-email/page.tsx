@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Подтверждение email",
-};
+export async function generateMetadata() {
+  const t = await getTranslations("ConfirmEmailPage");
 
-export default function ConfirmEmail() {
-  const t = useTranslations("ConfirmEmailPage");
-  return <div>{t("title")}</div>;
+  return {
+    title: t("title"),
+  };
 }
+
+export { default } from "@/pages/confirmEmail";

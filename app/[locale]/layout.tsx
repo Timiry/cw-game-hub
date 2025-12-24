@@ -9,6 +9,7 @@ import { ThemeProvider, CssBaseline } from "@cw-game/react-ui";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "@cw-game/react-ui/neucha";
 import LocaleSwitcher from "@/shared/ui/LocaleSwitcher";
+import Snackbar from "@/shared/ui/Snackbar";
 
 export const metadata: Metadata = {
   title: {
@@ -39,6 +40,7 @@ export default async function RootLayout({
               <NextIntlClientProvider messages={messages}>
                 <ThemeProvider>
                   <CssBaseline />
+                  <Snackbar />
                   <LocaleSwitcher />
                   {children}
                 </ThemeProvider>
