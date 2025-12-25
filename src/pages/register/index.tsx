@@ -11,18 +11,19 @@ import type { z } from "zod";
 import { useRouter } from "@/shared/i18n/navigation";
 import routes from "@/shared/config/routes";
 import useRegister from "@/features/auth/lib/hooks/useRegister";
-import { registerSchema } from "@/features/auth/lib/validation/registerSchema";
+import { createRegisterSchema } from "@/features/auth/lib/validation/createRegisterSchema";
 import CardLayout from "@/shared/ui/CardLayout";
 import { useTranslations } from "next-intl";
 
-type RegisterFormValues = z.infer<typeof registerSchema>;
+type RegisterFormValues = z.infer<ReturnType<typeof createRegisterSchema>>;
 
 const RegisterPage = () => {
   const t = useTranslations("RegisterPage");
   const router = useRouter();
+  const schema = createRegisterSchema(t.raw);
 
   const { control, handleSubmit, formState } = useForm<RegisterFormValues>({
-    resolver: zodResolver(registerSchema),
+    resolver: zodResolver(schema),
     mode: "onSubmit",
     defaultValues: { password: "", email: "" },
   });

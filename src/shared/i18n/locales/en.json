@@ -13,7 +13,10 @@
     "emailPlaceholder": "Email",
     "passwordPlaceholder": "Password",
     "registerButton": "Sign Up",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "passwordTooShort": "The password is too simple. Use more characters",
+    "passwordTooLong": "The password is too long. Use fewer characters",
+    "invalidEmail": "Invalid email"
   },
   "ConfirmEmailPage": {
     "title": "Email Confirmation",
