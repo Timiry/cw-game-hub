@@ -1,17 +1,10 @@
 "use client";
 
-import isCloseToNewYear from "@/shared/lib/date/isCloseToNewYear";
-import { Snowfall, useSnowfall } from "@hdcodedev/snowfall";
-import { useEffect } from "react";
+import { createElement, useEffect } from "react";
 
-export default function SnowFall() {
-  const { isEnabled, toggleSnow, updatePhysicsConfig } = useSnowfall();
+export default function Component() {
   useEffect(() => {
-    const snowTime = isCloseToNewYear();
-    if ((snowTime && !isEnabled) || (!snowTime && isEnabled)) {
-      toggleSnow();
-    }
-  }, [isEnabled, toggleSnow, updatePhysicsConfig]);
-
-  return <Snowfall />;
+    import("@zachleat/snow-fall");
+  }, []);
+  return createElement("snow-fall", { count: 100 });
 }

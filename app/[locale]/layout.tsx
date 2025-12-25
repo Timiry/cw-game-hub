@@ -10,8 +10,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "@cw-game/react-ui/neucha";
 import LocaleSwitcher from "@/shared/ui/LocaleSwitcher";
 import Snackbar from "@/shared/ui/Snackbar";
+import isCloseToNewYear from "@/shared/lib/date/isCloseToNewYear";
 import SnowFall from "@/shared/ui/SnowFall";
-import { SnowfallProvider } from "@hdcodedev/snowfall";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cw-game.ru"),
@@ -42,6 +42,7 @@ export default async function RootLayout({
             <StoreProvider>
               <NextIntlClientProvider messages={messages}>
                 <ThemeProvider>
+                  {isCloseToNewYear() && <SnowFall />}
                   <CssBaseline />
                   <Snackbar />
                   <LocaleSwitcher />
@@ -51,9 +52,6 @@ export default async function RootLayout({
             </StoreProvider>
           </QueryProvider>
         </AppRouterCacheProvider>
-        <SnowfallProvider>
-          <SnowFall />
-        </SnowfallProvider>
       </body>
     </html>
   );
