@@ -1,3 +1,4 @@
+import routes from "@/shared/config/routes";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
@@ -8,14 +9,14 @@ export async function generateMetadata() {
     description: t("description"),
     alternates: {
       languages: {
-        en: "/en",
-        ru: "/ru",
+        en: "/en" + routes.main,
+        ru: routes.main,
       },
     },
     openGraph: {
       title: "CW Game Hub",
       description: t("description"),
-      images: ["/public/og/og-image.png"],
+      images: ["/og/og-image.png"],
       type: "website",
     },
   };

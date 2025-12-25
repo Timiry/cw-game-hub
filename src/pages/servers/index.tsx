@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import { useTranslations } from "next-intl";
+import NextLink from "next/link";
 
 import { useStore } from "@/entities/app-state";
 import routes from "@/shared/config/routes";
@@ -72,7 +73,7 @@ const ServerListPage = observer(() => {
           {(userError.status === 401 && (
             <Typography variant="body1">
               {t("notAuthorized")}{" "}
-              <Link href={routes.login}>
+              <Link component={NextLink} href={routes.login}>
                 <Typography component="span" variant="body1">
                   {t("loginLink")}
                 </Typography>
@@ -90,7 +91,7 @@ const ServerListPage = observer(() => {
         <Stack spacing="12px" mb="12px">
           <Typography variant="body1">
             {t("emailNotConfirmed")}{" "}
-            <Link href={routes.confirmEmail}>
+            <Link component={NextLink} href={routes.confirmEmail}>
               <Typography component="span" variant="body1" color="success.main">
                 {t("confirmEmailLink")}
               </Typography>

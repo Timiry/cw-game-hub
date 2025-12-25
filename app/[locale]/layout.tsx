@@ -9,8 +9,12 @@ import { ThemeProvider, CssBaseline } from "@cw-game/react-ui";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "@cw-game/react-ui/neucha";
 import LocaleSwitcher from "@/shared/ui/LocaleSwitcher";
+import Snackbar from "@/shared/ui/Snackbar";
+import isCloseToNewYear from "@/shared/lib/date/isCloseToNewYear";
+import SnowFall from "@/shared/ui/SnowFall";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cw-game.ru"),
   title: {
     template: "%s - CW Game Hub",
     default: "CW Game Hub",
@@ -38,7 +42,9 @@ export default async function RootLayout({
             <StoreProvider>
               <NextIntlClientProvider messages={messages}>
                 <ThemeProvider>
+                  {isCloseToNewYear() && <SnowFall />}
                   <CssBaseline />
+                  <Snackbar />
                   <LocaleSwitcher />
                   {children}
                 </ThemeProvider>

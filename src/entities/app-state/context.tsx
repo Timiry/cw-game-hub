@@ -18,9 +18,8 @@ export const useStore = () => {
 
 export const useSnackbar = () => {
   const store = useStore();
-  if (store)
-    return [
-      store.openSnackbar.bind(store),
-      store.closeSnackbar.bind(store),
-    ] as const;
+  return [
+    store.openSnackbar.bind(store),
+    store.closeSnackbar.bind(store),
+  ] as const;
 };

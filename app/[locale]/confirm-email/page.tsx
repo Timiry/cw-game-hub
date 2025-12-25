@@ -1,11 +1,18 @@
-import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
+import routes from "@/shared/config/routes";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Подтверждение email",
-};
+export async function generateMetadata() {
+  const t = await getTranslations("ConfirmEmailPage");
 
-export default function ConfirmEmail() {
-  const t = useTranslations("ConfirmEmailPage");
-  return <div>{t("title")}</div>;
+  return {
+    title: t("title"),
+    alternates: {
+      languages: {
+        en: "/en" + routes.confirmEmail,
+        ru: routes.confirmEmail,
+      },
+    },
+  };
 }
+
+export { default } from "@/pages/confirmEmail";

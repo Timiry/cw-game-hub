@@ -9,11 +9,34 @@
     "error": "Something went wrong. Please try again."
   },
   "RegisterPage": {
-    "title": "Register"
+    "title": "Register",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "registerButton": "Sign Up",
+    "error": "Something went wrong. Please try again.",
+    "passwordTooShort": "The password is too simple. Use more characters",
+    "passwordTooLong": "The password is too long. Use fewer characters",
+    "invalidEmail": "Invalid email"
   },
   "ConfirmEmailPage": {
-    "title": "Confirm email"
-  },
+    "title": "Email Confirmation",
+    "description": "To fully use your account, please confirm the email address you provided during registration",
+    "changeEmailPrompt": "Change email?",
+    "emailInputPlaceholder": "Enter new email",
+    "codeInputPlaceholder": "Enter code",
+    "codeInputHelperText": "Check your inbox and enter the code you received in the email",
+    "sendCodeButton": "Send Code",
+    "codeSentTo": "Code sent to {{email}}",
+    "codeWillBeSentTo": "Code will be sent to {{email}}",
+    "codeExpired": "Code has expired. Please resend",
+    "accountConfirmed": "Account confirmed",
+    "loadingError": "Something went wrong. Please try again later",
+    "genericError": "Something went wrong. Please try again",
+    "alreadySent": "A code has already been sent. Enter the code from the email, or resend it in 10 minutes",
+    "codeExpiredSnackbar": "Code has expired. Please resend",
+    "invalidEmail": "Invalid email",
+    "invalidCode": "Invalid code"
+},
   "ServerListPage": {
     "title": "List of worlds",
     "description": "Exciting game about cats",
@@ -34,5 +57,11 @@
     "accessDenied": "Access denied. Unable to enter the world",
     "deleteButton": "Delete",
     "onlinePlayers": "The number of active characters in the world"
+  },
+  "NotFoundPage": {
+    "title": "Page Not Found",
+    "heading": "404",
+    "description": "Looks like this page doesn’t exist",
+    "backToHome": "Back to Home"
   }
 }
