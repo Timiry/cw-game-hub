@@ -54,5 +54,11 @@
     "accessDenied": "Access denied. Unable to enter the world",
     "deleteButton": "Delete",
     "onlinePlayers": "The number of active characters in the world"
+  },
+  "NotFoundPage": {
+    "title": "Page Not Found",
+    "heading": "404",
+    "description": "Looks like this page doesn’t exist",
+    "backToHome": "Back to Home"
   }
 }

@@ -3,6 +3,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  experimental: {
+    globalNotFound: true,
+  },
 };
 
 const withNextIntl = createNextIntlPlugin("./src/shared/i18n/request.ts");
