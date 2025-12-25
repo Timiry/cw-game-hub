@@ -13,6 +13,8 @@ import Link from "next/link";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { SnowfallProvider } from "@hdcodedev/snowfall";
+import SnowFall from "@/shared/ui/SnowFall";
 
 export async function generateMetadata() {
   const t = await getTranslations("NotFoundPage");
@@ -52,6 +54,9 @@ export default async function GlobalNotFound() {
             </ThemeProvider>
           </NextIntlClientProvider>
         </AppRouterCacheProvider>
+        <SnowfallProvider>
+          <SnowFall />
+        </SnowfallProvider>
       </body>
     </html>
   );
