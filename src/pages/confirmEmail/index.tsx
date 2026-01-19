@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { Controller, useForm, useWatch } from "react-hook-form";
+import { useCallback, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { useTimer } from "react-timer-hook";
 import { useRouter } from "@/shared/i18n/navigation";
 import {
@@ -99,7 +99,7 @@ const ConfirmEmailPage = () => {
           message: t("alreadySent"),
         });
       } else {
-        openSnackbar({ message: t("gemericError") });
+        openSnackbar({ message: t("genericError") });
       }
     }
   };
@@ -127,14 +127,6 @@ const ConfirmEmailPage = () => {
     },
     [user, router, openSnackbar, resetTimer, setError, t, sendVerifyCodeQuery]
   );
-
-  const code = useWatch({ control, name: "code" });
-
-  useEffect(() => {
-    if (code.length === 7) {
-      verifyCode(code);
-    }
-  }, [code, verifyCode]);
 
   if (isUserProfileLoading)
     return (
@@ -220,6 +212,11 @@ const ConfirmEmailPage = () => {
                 }
                 fullWidth
                 inputMode="numeric"
+                onChange={(e) => {
+                  if (e.target.value.length === 7) {
+                    verifyCode(e.target.value);
+                  }
+                }}
               />
             )}
           />
