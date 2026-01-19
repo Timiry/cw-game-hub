@@ -9,7 +9,7 @@ export async function generateMetadata() {
     alternates: {
       languages: {
         en: "/en" + routes.login,
-        ru: routes.login,
+        ru: "/ru" + routes.login,
       },
     },
   };
