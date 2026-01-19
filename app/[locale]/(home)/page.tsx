@@ -10,7 +10,7 @@ export async function generateMetadata() {
     alternates: {
       languages: {
         en: "/en" + routes.main,
-        ru: routes.main,
+        ru: "/ru" + routes.main,
       },
     },
     openGraph: {
