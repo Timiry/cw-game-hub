@@ -48,7 +48,7 @@ const ResetPasswordPage = () => {
 
   const restartTimer = () => {
     const date = new Date();
-    date.setTime(date.getTime() + 15 * 60 * 1000);
+    date.setTime(date.getTime() + 10 * 60 * 1000);
     restart(date);
   };
 

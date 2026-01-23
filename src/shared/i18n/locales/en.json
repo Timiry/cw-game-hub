@@ -67,7 +67,7 @@
   },
   "ResetPasswordPage": {
   "title": "Password Recovery",
-  "alreadySent": "A code has already been sent. Please enter the code from the email, or request a new one in 15 minutes",
+  "alreadySent": "A code has already been sent. Please enter the code from the email, or request a new one in 10 minutes",
   "codeExpired": "The code has expired. Please request a new one",
   "genericError": "Something went wrong. Please try again",
   "invalidEmail": "Invalid email",

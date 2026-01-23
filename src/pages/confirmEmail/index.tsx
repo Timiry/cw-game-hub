@@ -144,14 +144,14 @@ const ConfirmEmailPage = () => {
       </CardLayout>
     );
 
-  // if (user?.data?.confirmed)
-  //   return (
-  //     <CardLayout>
-  //       <Typography variant="body1" color="success.main">
-  //         {t("accountConfirmed")}
-  //       </Typography>
-  //     </CardLayout>
-  //   );
+  if (user?.data?.confirmed)
+    return (
+      <CardLayout>
+        <Typography variant="body1" color="success.main">
+          {t("accountConfirmed")}
+        </Typography>
+      </CardLayout>
+    );
 
   return (
     <CardLayout component="form" onSubmit={handleSubmit(sendCode)}>
