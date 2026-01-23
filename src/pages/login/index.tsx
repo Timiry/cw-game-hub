@@ -87,6 +87,13 @@ export const LoginPage = () => {
             {t("loginButton")}
           </Button>
         </Grid>
+        <Grid textAlign="center">
+          <Link component={NextLink} href={routes.resetPassword}>
+            <Typography variant="caption" color="success.main">
+              {t("forgotPasswordLink")}
+            </Typography>
+          </Link>
+        </Grid>
         <Grid alignSelf="center" mt="4px">
           <TelegramLoginButton onLogin={handleTelegramLogin} />
         </Grid>
