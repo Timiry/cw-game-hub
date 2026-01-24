@@ -4,6 +4,7 @@ const routes = {
   confirmEmail: "/confirm-email",
   login: "/login",
   register: "/register",
+  resetPassword: "/reset-password",
 };
 
 export default routes;

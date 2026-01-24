@@ -213,6 +213,7 @@ const ConfirmEmailPage = () => {
                 fullWidth
                 inputMode="numeric"
                 onChange={(e) => {
+                  field.onChange(e);
                   if (e.target.value.length === 7) {
                     verifyCode(e.target.value);
                   }

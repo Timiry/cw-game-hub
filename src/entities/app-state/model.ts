@@ -9,7 +9,7 @@ const SERVERS_LOCALSTORAGE_ITEM_NAME = "cwg:servers";
 
 export interface SnackbarOptions {
   open: boolean;
-  severity?: "error" | "success";
+  severity?: "error" | "success" | "warning" | "info";
   message?: string;
   action?: string;
   onAction?: () => void;

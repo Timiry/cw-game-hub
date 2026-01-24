@@ -6,7 +6,8 @@
     "loginButton": "Log In",
     "noAccount": "Don’t have an account?",
     "registerLink": "Sign up!",
-    "error": "Something went wrong. Please try again."
+    "error": "Something went wrong. Please try again.",
+    "forgotPasswordLink": "Forgot your password?"
   },
   "RegisterPage": {
     "title": "Register",
@@ -63,5 +64,23 @@
     "heading": "404",
     "description": "Looks like this page doesn’t exist",
     "backToHome": "Back to Home"
-  }
+  },
+  "ResetPasswordPage": {
+  "title": "Password Recovery",
+  "alreadySent": "A code has already been sent. Please enter the code from the email, or request a new one in 10 minutes",
+  "codeExpired": "The code has expired. Please request a new one",
+  "genericError": "Something went wrong. Please try again",
+  "invalidEmail": "Invalid email",
+  "invalidCode": "Invalid code",
+  "passwordTooShort": "The password is too simple. Use more characters",
+  "passwordTooLong": "The password is too long. Use fewer characters",
+  "stepEmailText": "Enter the email of your account. We’ll send a verification code to it, and once you enter it, you’ll be able to set a new password",
+  "stepCodeText": "Check your inbox at {email} and enter the code you received in the email",
+  "stepPasswordText": "Create and enter a new password",
+  "nextButton": "Next",
+  "changePasswordButton": "Change Password",
+  "emailInputPlaceholder": "Enter email",
+  "codeInputPlaceholder": "Enter code",
+  "passwordInputPlaceholder": "Enter password"
+}
 }

@@ -1,6 +1,11 @@
 import type { MetadataRoute } from "next";
 
-const privateRoutes = ["/login", "/register", "/confirm-email"];
+const privateRoutes = [
+  "/login",
+  "/register",
+  "/confirm-email",
+  "/reset-password",
+];
 
 const enPrivateRoutes = privateRoutes.map((route) => `/en${route}`);
 const ruPrivateRoutes = privateRoutes.map((route) => `/ru${route}`);
