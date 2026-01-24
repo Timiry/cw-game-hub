@@ -2,23 +2,18 @@
 
 import { useSnackbar } from "@/entities/app-state";
 import AuthService from "@/features/auth/api/AuthService";
+import CodeStepForm from "@/features/auth/ui/resetPasswordForms/CodeStepForm";
+import EmailStepForm from "@/features/auth/ui/resetPasswordForms/EmailStepForm";
+import PasswordStepForm from "@/features/auth/ui/resetPasswordForms/PasswordStepForm";
 import routes from "@/shared/config/routes";
 import { useRouter } from "@/shared/i18n/navigation";
 import type { HubError } from "@/shared/lib/api/HubError";
 import CardLayout from "@/shared/ui/CardLayout";
-import { Button, FullscreenLoader, Input, Typography } from "@cw-game/react-ui";
-import { Stack } from "@mui/material";
+import { FullscreenLoader } from "@cw-game/react-ui";
 import { useMutation } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
 import { useTimer } from "react-timer-hook";
-
-interface ResetPasswordFormValues {
-  email: string;
-  code: string;
-  password: string;
-}
 
 type Step = "email" | "code" | "password";
 
@@ -26,22 +21,18 @@ const ResetPasswordPage = () => {
   const router = useRouter();
   const [openSnackbar] = useSnackbar();
   const t = useTranslations("ResetPasswordPage");
-  const { control, handleSubmit, setValue, setError, formState } =
-    useForm<ResetPasswordFormValues>({
-      defaultValues: { email: "", code: "", password: "" },
-    });
 
   const [step, setStep] = useState<Step>("email");
-  const [committedEmail, setCommitedEmail] = useState<string>("");
+  const [commitedEmail, setCommitedEmail] = useState<string>("");
+  const [commitedCode, setCommitedCode] = useState<string>("");
 
-  const { restart, pause: pauseTimer } = useTimer({
+  const { restart } = useTimer({
     expiryTimestamp: new Date(),
     autoStart: false,
     onExpire: () => {
       openSnackbar({
         message: t("codeExpired"),
       });
-      setValue("code", "");
       setStep("email");
     },
   });
@@ -69,150 +60,80 @@ const ResetPasswordPage = () => {
       mutationFn: AuthService.applyPassword,
     });
 
-  const sendCode = async (data: ResetPasswordFormValues) => {
+  const sendCode = async ({ email }: { email: string }) => {
     try {
-      if (data.email) {
-        if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(data.email)) {
-          setError("email", { message: t("invalidEmail") });
-          return;
-        }
-        setCommitedEmail(data.email);
-        await sendCodeMutation({ email: data.email });
-        restartTimer();
-        setStep("code");
-      }
+      setCommitedEmail(email);
+      await sendCodeMutation({ email });
+      restartTimer();
+      setStep("code");
     } catch (err) {
       const status = (err as HubError)?.status;
       if (status === "ALREADY_SENT") {
-        restartTimer();
         openSnackbar({
           message: t("alreadySent"),
+          severity: "info",
         });
         setStep("code");
       } else {
-        openSnackbar({ message: t("genericError") });
+        openSnackbar({
+          message: t("genericError") + " " + (err as Error)?.toString?.(),
+        });
       }
     }
   };
 
-  const verifyCode = async (data: ResetPasswordFormValues) => {
+  const verifyCode = async ({ code }: { code: string }) => {
     try {
-      if (data.code) {
-        await verifyCodeQuery({ code: data.code });
-        pauseTimer();
+      if (code) {
+        await verifyCodeQuery({ code });
+        setCommitedCode(code);
         setStep("password");
       }
     } catch (err) {
       const status = (err as HubError)?.status;
       if (status === "EXPIRED") {
         resetTimer();
+      } else if (status === "WRONG_CODE") {
+        openSnackbar({ message: t("invalidCode") });
       } else {
-        setError("code", { message: t("invalidCode") });
+        openSnackbar({
+          message: t("genericError") + " " + (err as Error)?.toString?.(),
+        });
       }
     }
   };
 
-  const applyPassword = async (data: ResetPasswordFormValues) => {
+  const applyPassword = async ({ password }: { password: string }) => {
     try {
-      if (data.password.length < 8) {
-        setError("password", { message: t("passwordTooShort") });
-        return;
-      }
-      if (data.password.length > 128) {
-        setError("password", { message: t("passwordTooLong") });
-        return;
-      }
-      await applyCodeQuery({ code: data.code, password: data.password });
+      await applyCodeQuery({ code: commitedCode, password });
       router.push(routes.login);
     } catch (err) {
-      void err; // обход обшибки ts о неиспользовании err
-      openSnackbar({ message: t("genericError") });
+      const status = (err as HubError)?.status;
+      if (status === "EXPIRED") {
+        resetTimer();
+      } else {
+        openSnackbar({
+          message: t("genericError") + " " + (err as Error)?.toString?.(),
+        });
+      }
     }
   };
 
   return (
-    <CardLayout
-      component="form"
-      onSubmit={
-        step === "email"
-          ? handleSubmit(sendCode)
-          : step === "code"
-            ? handleSubmit(verifyCode)
-            : handleSubmit(applyPassword)
-      }
-    >
+    <CardLayout>
       {(isLoadingSendCode || isLoadingVerifyCode || isLoadingApplyPassword) && (
         <FullscreenLoader />
       )}
-      <Stack spacing="8px">
-        {step === "email" && (
-          <>
-            <Typography variant="body1">{t("stepEmailText")}</Typography>
-            <Controller
-              control={control}
-              name="email"
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  variant="filled"
-                  size="medium"
-                  placeholder={t("emailInputPlaceholder")}
-                  error={Boolean(formState.errors.email)}
-                  helperText={formState.errors.email?.message}
-                  fullWidth
-                />
-              )}
-            />
-          </>
-        )}
-        {step === "code" && (
-          <>
-            <Typography variant="body1">
-              {t("stepCodeText", { email: committedEmail })}
-            </Typography>
-            <Controller
-              control={control}
-              name="code"
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  variant="filled"
-                  size="medium"
-                  placeholder={t("codeInputPlaceholder")}
-                  error={Boolean(formState.errors.code)}
-                  helperText={formState.errors.code?.message}
-                  fullWidth
-                  inputMode="numeric"
-                />
-              )}
-            />
-          </>
-        )}
-        {step === "password" && (
-          <>
-            <Typography variant="body1">{t("stepPasswordText")}</Typography>
-            <Controller
-              control={control}
-              name="password"
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  variant="filled"
-                  type="password"
-                  size="medium"
-                  placeholder={t("passwordInputPlaceholder")}
-                  error={Boolean(formState.errors.password)}
-                  helperText={formState.errors.password?.message}
-                  fullWidth
-                />
-              )}
-            />
-          </>
-        )}
-        <Button variant="contained" size="large" fullWidth type="submit">
-          {step === "password" ? t("changePasswordButton") : t("nextButton")}
-        </Button>
-      </Stack>
+      {step === "email" && <EmailStepForm onSubmitCallback={sendCode} />}
+      {step === "code" && (
+        <CodeStepForm
+          onSubmitCallback={verifyCode}
+          commitedEmail={commitedEmail}
+        />
+      )}
+      {step === "password" && (
+        <PasswordStepForm onSubmitCallback={applyPassword} />
+      )}
     </CardLayout>
   );
 };
