@@ -8,10 +8,10 @@ import { QueryProvider } from "@/shared/lib/react-query/query-provider";
 import { ThemeProvider, CssBaseline } from "@cw-game/react-ui";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "@cw-game/react-ui/neucha";
-import LocaleSwitcher from "@/shared/ui/LocaleSwitcher";
 import Snackbar from "@/shared/ui/Snackbar";
 import isCloseToNewYear from "@/shared/lib/date/isCloseToNewYear";
 import SnowFall from "@/shared/ui/SnowFall";
+import Header from "@/shared/ui/Header";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cw-game.ru"),
@@ -44,8 +44,8 @@ export default async function RootLayout({
                 <ThemeProvider>
                   {isCloseToNewYear() && <SnowFall />}
                   <CssBaseline />
+                  <Header />
                   <Snackbar />
-                  <LocaleSwitcher />
                   {children}
                 </ThemeProvider>
               </NextIntlClientProvider>

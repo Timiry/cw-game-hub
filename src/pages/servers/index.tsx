@@ -20,6 +20,7 @@ import FailedToFetchServers from "@/features/servers/ui/FailedToFetchServers";
 import ServerListItem from "@/features/servers/ui/ServerListItem";
 import EmptyServerList from "@/features/servers/ui/EmptyServerList";
 import AddLocalServer from "@/features/servers/ui/AddLocalServer";
+import { Box } from "@mui/material";
 
 const ServerListPage = observer(() => {
   const store = useStore();
@@ -119,27 +120,36 @@ const ServerListPage = observer(() => {
       />
       {isServersError && <FailedToFetchServers />}
       {isServerListEmpty && <EmptyServerList onLink={openAddLocalServer} />}
-      <Grid container direction="column" rowSpacing="8px" pt="16px">
-        {store.localServers.map((address) => (
-          <Grid key={address}>
-            <ServerListItem
-              origin={address}
-              forbidden={user === undefined || emailNotConfirmed}
-              onDelete={() => store.deleteLocalServer(address)}
-            />
-          </Grid>
-        ))}
-        {servers?.map((server) => (
-          <Grid key={server.id}>
-            <ServerListItem
-              origin={server.address}
-              name={server.name}
-              description={server.description}
-              forbidden={user === undefined || emailNotConfirmed}
-            />
-          </Grid>
-        ))}
-      </Grid>
+      <Box
+        sx={{
+          maxHeight: "calc(100vh - 300px)",
+          overflowY: "auto",
+          overflowX: "hidden",
+          mt: "16px",
+        }}
+      >
+        <Grid container direction="column" rowSpacing="8px">
+          {store.localServers.map((address) => (
+            <Grid key={address}>
+              <ServerListItem
+                origin={address}
+                forbidden={user === undefined || emailNotConfirmed}
+                onDelete={() => store.deleteLocalServer(address)}
+              />
+            </Grid>
+          ))}
+          {servers?.map((server) => (
+            <Grid key={server.id}>
+              <ServerListItem
+                origin={server.address}
+                name={server.name}
+                description={server.description}
+                forbidden={user === undefined || emailNotConfirmed}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </CardLayout>
   );
 });
