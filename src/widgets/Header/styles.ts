@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 export const StyledHeader = styled("header")(({ theme }) => ({
   position: "fixed",
@@ -13,5 +13,5 @@ export const StyledHeader = styled("header")(({ theme }) => ({
     padding: "12px 70px",
   },
   borderBottom: `1px solid ${theme.palette.hub.primary.dark}`,
-  zIndex: 1000,
+  zIndex: theme.zIndex.appBar,
 }));

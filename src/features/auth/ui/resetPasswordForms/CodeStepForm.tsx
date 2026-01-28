@@ -1,5 +1,5 @@
 import { Button, Input, Typography } from "@cw-game/react-ui";
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 import { useTranslations } from "next-intl";
 import { Controller, useForm } from "react-hook-form";
 

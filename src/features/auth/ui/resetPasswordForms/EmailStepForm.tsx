@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { Controller, useForm } from "react-hook-form";
 import { createEmailSchema } from "../../lib/validation/createEmailSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
 interface EmailStepFormValues {
   email: string;

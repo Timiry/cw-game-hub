@@ -1,4 +1,5 @@
-import { styled, ToggleButtonGroup } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 export const LangToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   height: 36,

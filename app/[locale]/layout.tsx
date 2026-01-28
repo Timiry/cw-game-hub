@@ -11,7 +11,7 @@ import "@cw-game/react-ui/neucha";
 import Snackbar from "@/shared/ui/Snackbar";
 import isCloseToNewYear from "@/shared/lib/date/isCloseToNewYear";
 import SnowFall from "@/shared/ui/SnowFall";
-import Header from "@/shared/ui/Header";
+import Header from "@/widgets/Header";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cw-game.ru"),
