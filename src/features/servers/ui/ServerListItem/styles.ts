@@ -1,5 +1,5 @@
 import { stylesToColorSvg } from "@cw-game/react-ui";
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import { BlockIcon, DisconnectIcon, RunningCatIcon } from "@/shared/ui/icons";

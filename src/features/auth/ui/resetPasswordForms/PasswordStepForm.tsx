@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { Controller, useForm } from "react-hook-form";
 import { createPasswordSchema } from "../../lib/validation/createPasswordSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
 interface PasswordStepFormValues {
   password: string;

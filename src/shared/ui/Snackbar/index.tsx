@@ -33,7 +33,7 @@ const Snackbar = observer(() => {
             </Button>
           )
         }
-        sx={{ width: { mobile: "100%", desktop: "368px" } }}
+        sx={{ width: { mobile: "100%", desktop: "368px" }, mt: "75px" }}
       >
         {store.snackbar.message}
       </Alert>

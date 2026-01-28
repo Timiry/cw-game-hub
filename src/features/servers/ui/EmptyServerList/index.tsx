@@ -1,6 +1,7 @@
 "use client";
 
-import { Link, Typography } from "@mui/material";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useTranslations } from "next-intl";
 

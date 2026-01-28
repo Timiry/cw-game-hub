@@ -9,7 +9,7 @@ const CardLayout = (props: PropsWithChildren & BoxProps) => {
   return (
     <Box
       width={{ mobile: "90%", desktop: "480px" }}
-      m="0 auto 40px"
+      m="160px auto 40px"
       position="relative"
     >
       <Paper elevation={8}>

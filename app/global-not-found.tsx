@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@cw-game/react-ui";
 import "@cw-game/react-ui/neucha";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 import routes from "@/shared/config/routes";
 import Link from "next/link";
 import { getMessages } from "next-intl/server";
