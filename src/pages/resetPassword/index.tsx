@@ -68,16 +68,26 @@ const ResetPasswordPage = () => {
       setStep("code");
     } catch (err) {
       const status = (err as HubError)?.status;
-      if (status === "ALREADY_SENT") {
-        openSnackbar({
-          message: t("alreadySent"),
-          severity: "info",
-        });
-        setStep("code");
-      } else {
-        openSnackbar({
-          message: t("genericError") + " " + (err as Error)?.toString?.(),
-        });
+      switch (status) {
+        case "ALREADY_SENT":
+          openSnackbar({
+            message: t("alreadySent"),
+            severity: "info",
+          });
+          setStep("code");
+          return;
+        case "NOT_FOUND_CODE":
+          openSnackbar({ message: t("notFoundCode") });
+          return;
+        case "INTERNAL":
+          openSnackbar({
+            message: t("internalError") + " " + (err as Error)?.toString?.(),
+          });
+          return;
+        default:
+          openSnackbar({
+            message: t("genericError") + " " + (err as Error)?.toString?.(),
+          });
       }
     }
   };
@@ -91,14 +101,25 @@ const ResetPasswordPage = () => {
       }
     } catch (err) {
       const status = (err as HubError)?.status;
-      if (status === "EXPIRED") {
-        resetTimer();
-      } else if (status === "WRONG_CODE") {
-        openSnackbar({ message: t("invalidCode") });
-      } else {
-        openSnackbar({
-          message: t("genericError") + " " + (err as Error)?.toString?.(),
-        });
+      switch (status) {
+        case "CODE_EXPIRED":
+          resetTimer();
+          return;
+        case "WRONG_CODE":
+          openSnackbar({ message: t("invalidCode") });
+          return;
+        case "ATTEMPTS_LIMIT":
+          openSnackbar({ message: t("attemptsLimit") });
+          return;
+        case "INTERNAL":
+          openSnackbar({
+            message: t("internalError") + " " + (err as Error)?.toString?.(),
+          });
+          return;
+        default:
+          openSnackbar({
+            message: t("genericError") + " " + (err as Error)?.toString?.(),
+          });
       }
     }
   };
@@ -109,12 +130,19 @@ const ResetPasswordPage = () => {
       router.push(routes.login);
     } catch (err) {
       const status = (err as HubError)?.status;
-      if (status === "EXPIRED") {
-        resetTimer();
-      } else {
-        openSnackbar({
-          message: t("genericError") + " " + (err as Error)?.toString?.(),
-        });
+      switch (status) {
+        case "CODE_EXPIRED":
+          resetTimer();
+          return;
+        case "INTERNAL":
+          openSnackbar({
+            message: t("internalError") + " " + (err as Error)?.toString?.(),
+          });
+          return;
+        default:
+          openSnackbar({
+            message: t("genericError") + " " + (err as Error)?.toString?.(),
+          });
       }
     }
   };

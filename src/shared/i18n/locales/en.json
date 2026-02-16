@@ -6,18 +6,25 @@
     "loginButton": "Log In",
     "noAccount": "Don’t have an account?",
     "registerLink": "Sign up!",
-    "error": "Something went wrong. Please try again.",
-    "forgotPasswordLink": "Forgot your password?"
+    "genericError": "Something went wrong. Please try again.",
+    "forgotPasswordLink": "Forgot your password?",
+    "invalidEmail": "Invalid email",
+    "passwordTooShort": "The password is too simple. Use more characters",
+    "passwordTooLong": "The password is too long. Use fewer characters",
+    "badCredentials": "Wrong email or password, please try again later.",
+    "internalError": "Internal server error, please try again later."
   },
   "RegisterPage": {
     "title": "Register",
     "emailPlaceholder": "Email",
     "passwordPlaceholder": "Password",
     "registerButton": "Sign Up",
-    "error": "Something went wrong. Please try again.",
+    "genericError": "Something went wrong. Please try again.",
     "passwordTooShort": "The password is too simple. Use more characters",
     "passwordTooLong": "The password is too long. Use fewer characters",
-    "invalidEmail": "Invalid email"
+    "invalidEmail": "Invalid email",
+    "alreadyExistError": "The user with this email already exists. Log in with a password or restore it.",
+    "internalError": "Internal server error, please try again later."
   },
   "ConfirmEmailPage": {
     "title": "Email Confirmation",
@@ -32,11 +39,14 @@
     "codeExpired": "Code has expired. Please resend",
     "accountConfirmed": "Account confirmed",
     "loadingError": "Something went wrong. Please try again later",
-    "genericError": "Something went wrong. Please try again",
+    "genericError": "Something went wrong. Please try again.",
     "alreadySent": "A code has already been sent. Enter the code from the email, or resend it in 10 minutes",
     "codeExpiredSnackbar": "Code has expired. Please resend",
     "invalidEmail": "Invalid email",
-    "invalidCode": "Invalid code"
+    "invalidCode": "Invalid code",
+    "internalError": "Internal server error, please try again later.",
+    "attemptsLimit": "Too many attempts to enter the confirmation code",
+    "alreadyExistError": "The user with this email already exists."
 },
   "ServerListPage": {
     "title": "List of worlds",
@@ -66,21 +76,24 @@
     "backToHome": "Back to Home"
   },
   "ResetPasswordPage": {
-  "title": "Password Recovery",
-  "alreadySent": "A code has already been sent. Please enter the code from the email, or request a new one in 10 minutes",
-  "codeExpired": "The code has expired. Please request a new one",
-  "genericError": "Something went wrong. Please try again",
-  "invalidEmail": "Invalid email",
-  "invalidCode": "Invalid code",
-  "passwordTooShort": "The password is too simple. Use more characters",
-  "passwordTooLong": "The password is too long. Use fewer characters",
-  "stepEmailText": "Enter the email of your account. We’ll send a verification code to it, and once you enter it, you’ll be able to set a new password",
-  "stepCodeText": "Check your inbox at {email} and enter the code you received in the email",
-  "stepPasswordText": "Create and enter a new password",
-  "nextButton": "Next",
-  "changePasswordButton": "Change Password",
-  "emailInputPlaceholder": "Enter email",
-  "codeInputPlaceholder": "Enter code",
-  "passwordInputPlaceholder": "Enter password"
-}
+    "title": "Password Recovery",
+    "alreadySent": "A code has already been sent. Please enter the code from the email, or request a new one in 10 minutes",
+    "codeExpired": "The code has expired. Please request a new one",
+    "genericError": "Something went wrong. Please try again.",
+    "invalidEmail": "Invalid email",
+    "invalidCode": "Invalid code",
+    "passwordTooShort": "The password is too simple. Use more characters",
+    "passwordTooLong": "The password is too long. Use fewer characters",
+    "stepEmailText": "Enter the email of your account. We’ll send a verification code to it, and once you enter it, you’ll be able to set a new password",
+    "stepCodeText": "Check your inbox at {email} and enter the code you received in the email",
+    "stepPasswordText": "Create and enter a new password",
+    "nextButton": "Next",
+    "changePasswordButton": "Change Password",
+    "emailInputPlaceholder": "Enter email",
+    "codeInputPlaceholder": "Enter code",
+    "passwordInputPlaceholder": "Enter password",
+    "internalError": "Internal server error, please try again later.",
+    "attemptsLimit": "Too many attempts to enter the confirmation code",
+    "notFoundCode": "The confirmation code has not been sent, please try again."
+  }
 }

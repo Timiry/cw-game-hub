@@ -3,7 +3,6 @@
 import { Button, FullscreenLoader } from "@cw-game/react-ui";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { z } from "zod";
@@ -14,6 +13,8 @@ import useRegister from "@/features/auth/lib/hooks/useRegister";
 import { createRegisterSchema } from "@/features/auth/lib/validation/createRegisterSchema";
 import CardLayout from "@/shared/ui/CardLayout";
 import { useTranslations } from "next-intl";
+import { useSnackbar } from "@/entities/app-state";
+import type { HubError } from "@/shared/lib/api/HubError";
 
 type RegisterFormValues = z.infer<ReturnType<typeof createRegisterSchema>>;
 
@@ -21,6 +22,7 @@ const RegisterPage = () => {
   const t = useTranslations("RegisterPage");
   const router = useRouter();
   const schema = createRegisterSchema(t.raw);
+  const [openSnackbar] = useSnackbar();
 
   const { control, handleSubmit, formState } = useForm<RegisterFormValues>({
     resolver: zodResolver(schema),
@@ -28,11 +30,31 @@ const RegisterPage = () => {
     defaultValues: { password: "", email: "" },
   });
 
-  const { isPending, isError, mutateAsync: register } = useRegister();
+  const { isPending, mutateAsync: register } = useRegister();
 
   const handleAccountRegister = async (data: RegisterFormValues) => {
-    await register({ accounts: data });
-    router.push(routes.confirmEmail);
+    try {
+      await register({ accounts: data });
+      router.push(routes.confirmEmail);
+    } catch (err) {
+      const status = (err as HubError)?.status;
+      switch (status) {
+        case "USER_ALREADY_EXIST":
+          openSnackbar({
+            message: t("alreadyExistError"),
+          });
+          return;
+        case "INTERNAL":
+          openSnackbar({
+            message: t("internalError") + " " + (err as Error)?.toString?.(),
+          });
+          return;
+        default:
+          openSnackbar({
+            message: t("genericError") + " " + (err as Error)?.toString?.(),
+          });
+      }
+    }
   };
 
   return (
@@ -79,13 +101,6 @@ const RegisterPage = () => {
             {t("registerButton")}
           </Button>
         </Grid>
-        {isError && (
-          <Grid textAlign="center">
-            <Typography variant="caption" color="error.main">
-              {t("error")}
-            </Typography>
-          </Grid>
-        )}
       </Grid>
     </CardLayout>
   );
