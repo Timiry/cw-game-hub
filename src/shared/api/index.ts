@@ -22,7 +22,10 @@ async function parseErrorResponse(response: Response) {
 async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {
     const errorData = await parseErrorResponse(response);
-    throw new HubError({ status: errorData.status });
+    throw new HubError({
+      status: errorData.status,
+      message: errorData.message,
+    });
   }
 
   try {

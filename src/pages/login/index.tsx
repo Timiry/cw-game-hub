@@ -17,6 +17,10 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/shared/i18n/navigation";
 import Grid from "@mui/material/Grid";
 import TelegramLoginButton from "../../features/auth/ui/TelegramLoginButton";
+import { useSnackbar } from "@/entities/app-state";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createRegisterSchema } from "@/features/auth/lib/validation/createRegisterSchema";
+import type { HubError } from "@/shared/lib/api/HubError";
 
 interface LoginFormValues {
   email: string;
@@ -26,10 +30,14 @@ interface LoginFormValues {
 export const LoginPage = () => {
   const t = useTranslations("LoginPage");
   const router = useRouter();
-  const { control, handleSubmit } = useForm<LoginFormValues>({
+  const [openSnackbar] = useSnackbar();
+  const schema = createRegisterSchema(t.raw);
+  const { control, handleSubmit, formState } = useForm<LoginFormValues>({
+    resolver: zodResolver(schema),
+    mode: "onSubmit",
     defaultValues: { email: "", password: "" },
   });
-  const { isPending, isError, mutateAsync: login } = useLogin();
+  const { isPending, mutateAsync: login } = useLogin();
 
   const handleTelegramLogin = async (data: unknown) => {
     const user = await login({ telegram: data });
@@ -41,11 +49,31 @@ export const LoginPage = () => {
   };
 
   const handleAccountsLogin = async (data: LoginFormValues) => {
-    const user = await login({ accounts: data });
-    if (window.opener) {
-      postSuccessAuthMessage(user);
-    } else {
-      router.push(routes.main);
+    try {
+      const user = await login({ accounts: data });
+      if (window.opener) {
+        postSuccessAuthMessage(user);
+      } else {
+        router.push(routes.main);
+      }
+    } catch (err) {
+      const status = (err as HubError)?.status;
+      switch (status) {
+        case "BAD_CREDENTIALS":
+          openSnackbar({
+            message: t("badCredentials"),
+          });
+          return;
+        case "INTERNAL":
+          openSnackbar({
+            message: t("internalError") + " " + (err as Error)?.toString?.(),
+          });
+          return;
+        default:
+          openSnackbar({
+            message: t("genericError") + " " + (err as Error)?.toString?.(),
+          });
+      }
     }
   };
 
@@ -62,6 +90,8 @@ export const LoginPage = () => {
                 {...field}
                 variant="filled"
                 placeholder={t("emailPlaceholder")}
+                error={Boolean(formState.errors.email)}
+                helperText={formState.errors.email?.message}
                 fullWidth
               />
             )}
@@ -77,6 +107,8 @@ export const LoginPage = () => {
                 variant="filled"
                 type="password"
                 placeholder={t("passwordPlaceholder")}
+                error={Boolean(formState.errors.password)}
+                helperText={formState.errors.password?.message}
                 fullWidth
               />
             )}
@@ -111,13 +143,6 @@ export const LoginPage = () => {
             </Link>
           </Typography>
         </Grid>
-        {isError && (
-          <Grid textAlign="center">
-            <Typography variant="caption" color="error.main">
-              {t("error")}
-            </Typography>
-          </Grid>
-        )}
       </Grid>
     </CardLayout>
   );

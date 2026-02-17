@@ -23,6 +23,8 @@ import type { HubError } from "@/shared/lib/api/HubError";
 import routes from "@/shared/config/routes";
 import { postSuccessAuthMessage } from "@/features/auth/lib/utils/postMessages";
 import { useTranslations } from "next-intl";
+import { createConfirmEmailSchema } from "@/features/auth/lib/validation/createConfirmEmailSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 interface ConfirmEmailFormValues {
   code: string;
@@ -37,8 +39,11 @@ const ConfirmEmailPage = () => {
     expiryTimestamp: new Date(),
     autoStart: false,
   });
-  const { control, handleSubmit, setValue, setError, formState } =
+  const schema = createConfirmEmailSchema(t.raw);
+  const { control, handleSubmit, setValue, formState } =
     useForm<ConfirmEmailFormValues>({
+      resolver: zodResolver(schema),
+      mode: "onSubmit",
       defaultValues: { code: "", email: "" },
     });
   const {
@@ -78,12 +83,6 @@ const ConfirmEmailPage = () => {
 
   const sendCode = async (data: ConfirmEmailFormValues) => {
     try {
-      if (data.email) {
-        if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(data.email)) {
-          setError("email", { message: t("invalidEmail") });
-          return;
-        }
-      }
       await sendCodeMutation({ email: data.email });
       setCommitedEmail(data.email);
       setCodeAwaiting(true);
@@ -91,15 +90,30 @@ const ConfirmEmailPage = () => {
       setOpenChangeEmail(false);
     } catch (err) {
       const status = (err as HubError)?.status;
-      if (status === "ALREADY_SENT") {
-        restartTimer();
-        setOpenChangeEmail(false);
-        setValue("email", "");
-        openSnackbar({
-          message: t("alreadySent"),
-        });
-      } else {
-        openSnackbar({ message: t("genericError") });
+      switch (status) {
+        case "ALREADY_SENT":
+          setOpenChangeEmail(false);
+          setValue("email", "");
+          openSnackbar({
+            message: t("alreadySent"),
+            severity: "info",
+          });
+          return;
+        case "NOT_FOUND_CODE":
+          openSnackbar({ message: t("notFoundCode") });
+          return;
+        case "USER_ALREADY_EXIST":
+          openSnackbar({ message: t("alreadyExistError") });
+          return;
+        case "INTERNAL":
+          openSnackbar({
+            message: t("internalError") + " " + (err as Error)?.toString?.(),
+          });
+          return;
+        default:
+          openSnackbar({
+            message: t("genericError") + " " + (err as Error)?.toString?.(),
+          });
       }
     }
   };
@@ -115,17 +129,32 @@ const ConfirmEmailPage = () => {
         }
       } catch (err) {
         const status = (err as HubError)?.status;
-        if (status === "EXPIRED") {
-          openSnackbar({
-            message: t("codeExpired"),
-          });
-          resetTimer();
-        } else {
-          setError("code", { message: t("invalidCode") });
+        switch (status) {
+          case "CODE_EXPIRED":
+            openSnackbar({
+              message: t("codeExpired"),
+            });
+            resetTimer();
+            return;
+          case "WRONG_CODE":
+            openSnackbar({ message: t("invalidCode") });
+            return;
+          case "ATTEMPTS_LIMIT":
+            openSnackbar({ message: t("attemptsLimit") });
+            return;
+          case "INTERNAL":
+            openSnackbar({
+              message: t("internalError") + " " + (err as Error)?.toString?.(),
+            });
+            return;
+          default:
+            openSnackbar({
+              message: t("genericError") + " " + (err as Error)?.toString?.(),
+            });
         }
       }
     },
-    [user, router, openSnackbar, resetTimer, setError, t, sendVerifyCodeQuery]
+    [user, router, openSnackbar, resetTimer, t, sendVerifyCodeQuery]
   );
 
   if (isUserProfileLoading)
