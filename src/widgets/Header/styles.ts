@@ -12,6 +12,8 @@ export const StyledHeader = styled("header")(({ theme }) => ({
   [theme.breakpoints.up("desktop")]: {
     padding: "12px 70px",
   },
-  borderBottom: `1px solid ${theme.palette.hub.primary.dark}`,
+  backgroundColor: theme.palette.hub.background.default,
+  borderBottom: `1px solid`,
+  borderColor: theme.palette.divider,
   zIndex: theme.zIndex.appBar,
 }));

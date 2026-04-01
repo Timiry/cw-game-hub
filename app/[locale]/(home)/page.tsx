@@ -2,7 +2,7 @@ import routes from "@/shared/config/routes";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
-  const t = await getTranslations("ServerListPage");
+  const t = await getTranslations("PromoPage");
 
   return {
     title: t("title"),
@@ -22,4 +22,4 @@ export async function generateMetadata() {
   };
 }
 
-export { default } from "@/pages/servers";
+export { default } from "@/pages/promo";
