@@ -8,7 +8,8 @@ import { observer } from "mobx-react-lite";
 
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { CoveredSection } from "./styles";
+import { CoveredSection, DescriptionContainer } from "./styles";
+import ExternalLink from "@/shared/ui/ExternalLink";
 
 const PromoPage = observer(() => {
   const t = useTranslations("PromoPage");
@@ -17,13 +18,7 @@ const PromoPage = observer(() => {
   return (
     <Box>
       <CoveredSection>
-        <Box
-          position="absolute"
-          bottom={{ desktop: "10%" }}
-          left="10%"
-          width={{ mobile: "80%", desktop: "40%" }}
-          mt="68px"
-        >
+        <DescriptionContainer>
           <Typography variant="h2">{t("title")}</Typography>
           <Typography variant="h5" gutterBottom>
             {t("description")}
@@ -35,6 +30,11 @@ const PromoPage = observer(() => {
           >
             <Typography variant="h5">{t("playButton")}</Typography>
           </Button>
+        </DescriptionContainer>
+        <Box position="absolute" right="30px" bottom="20px">
+          <ExternalLink href="https://t.me/undead_fuga_art">
+            <Typography variant="h6">designed by undead_fuga</Typography>
+          </ExternalLink>
         </Box>
       </CoveredSection>
       <Box textAlign="center" my="50px">

@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink } from "@/shared/ui/ExternalLink";
+import ExternalLink from "@/shared/ui/ExternalLink";
 import { Divider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";

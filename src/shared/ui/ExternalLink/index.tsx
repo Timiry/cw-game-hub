@@ -1,7 +1,18 @@
-import { styled } from "@mui/material/styles";
-import Link from "next/link";
-
-export const ExternalLink = styled(Link)(() => ({
-  target: "_blank",
-  rel: "noopener noreferrer",
-}));
+export default function ExternalLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ color: "inherit" }}
+    >
+      {children}
+    </a>
+  );
+}

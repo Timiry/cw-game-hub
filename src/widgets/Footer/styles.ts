@@ -34,8 +34,8 @@ export const StyledTiktokIcon = styled(TiktokIcon)(({ theme }) => ({
 }));
 
 export const StyledPixiJsIcon = styled(PixiJsIcon)(() => ({
-  width: "80px",
-  height: "60px",
+  width: "70px",
+  height: "50px",
 }));
 
 export const StyledNodeJsIcon = styled(NodeJsIcon)(() => ({
