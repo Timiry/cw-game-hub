@@ -2,16 +2,28 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 
 export const CoveredSection = styled(Box)(({ theme }) => ({
-  backgroundImage: "url(/poster.webp)",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
   width: "100%",
   height: "100vh",
-  position: "static",
+  position: "relative",
   color: theme.palette.hub.background.default,
-  backgroundPosition: "left",
-  [theme.breakpoints.up("tablet")]: {
-    backgroundPosition: "right",
+
+  background: `linear-gradient(135deg, #61A8CE 0%, #a6d0df 40%, #55724F 100%)`,
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage: "url(/poster.webp)",
+    backgroundSize: "cover",
+    backgroundPosition: "left",
+    backgroundRepeat: "no-repeat",
+
+    [theme.breakpoints.up("tablet")]: {
+      backgroundPosition: "right",
+    },
   },
 }));
 

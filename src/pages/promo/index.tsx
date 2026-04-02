@@ -2,7 +2,8 @@
 
 import routes from "@/shared/config/routes";
 import Footer from "@/widgets/Footer";
-import { Button, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { observer } from "mobx-react-lite";
 
