@@ -28,5 +28,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: `${baseUrl}/server-list/en`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 1,
+      alternates: {
+        languages: {
+          ru: `${baseUrl}/ru`,
+          en: `${baseUrl}/en`,
+        },
+      },
+    },
+    {
+      url: `${baseUrl}/server-list/ru`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 1,
+      alternates: {
+        languages: {
+          ru: `${baseUrl}/ru`,
+          en: `${baseUrl}/en`,
+        },
+      },
+    },
   ];
 }

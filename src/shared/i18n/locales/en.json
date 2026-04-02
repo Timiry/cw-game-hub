@@ -95,5 +95,16 @@
     "internalError": "Internal server error, please try again later.",
     "attemptsLimit": "Too many attempts to enter the confirmation code",
     "notFoundCode": "The confirmation code has not been sent, please try again."
+  },
+  "PromoPage": {
+    "title": "CW Game",
+    "description": "CW Game is an online browser game where you can immerse yourself in the world of cats. Create your own unique character and team up with others to form a tribe. Develop it, capture territories and compete with others — loyal friends and worthy opponents are waiting for you!",
+    "playButton": "Play",
+    "gameplay": "Gameplay"
+  },
+  "Footer": {
+    "findUs": "Find us",
+    "footerText": "CW Game. A labour of love by the CW Game team and all who care.",
+    "poweredBy": "Powered by"
   }
 }
