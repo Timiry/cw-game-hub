@@ -54,7 +54,7 @@ export const LoginPage = () => {
       if (window.opener) {
         postSuccessAuthMessage(user);
       } else {
-        router.push(routes.main);
+        router.push(routes.serverList);
       }
     } catch (err) {
       const status = (err as HubError)?.status;
