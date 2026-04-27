@@ -6,7 +6,7 @@ import CardLayout from "@/shared/ui/CardLayout";
 import {
   Button,
   FullscreenLoader,
-  Input,
+  IconButton,
   Link,
   Typography,
 } from "@cw-game/react-ui";
@@ -21,6 +21,10 @@ import { useSnackbar } from "@/entities/app-state";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createRegisterSchema } from "@/features/auth/lib/validation/createRegisterSchema";
 import type { HubError } from "@/shared/lib/api/HubError";
+import { useState } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import TextField from "@mui/material/TextField";
 
 interface LoginFormValues {
   email: string;
@@ -31,6 +35,8 @@ export const LoginPage = () => {
   const t = useTranslations("LoginPage");
   const router = useRouter();
   const [openSnackbar] = useSnackbar();
+  const [showPassword, setShowPassword] = useState(false);
+
   const schema = createRegisterSchema(t.raw);
   const { control, handleSubmit, formState } = useForm<LoginFormValues>({
     resolver: zodResolver(schema),
@@ -86,7 +92,7 @@ export const LoginPage = () => {
             control={control}
             name="email"
             render={({ field }) => (
-              <Input
+              <TextField
                 {...field}
                 variant="filled"
                 placeholder={t("emailPlaceholder")}
@@ -102,14 +108,26 @@ export const LoginPage = () => {
             control={control}
             name="password"
             render={({ field }) => (
-              <Input
+              <TextField
                 {...field}
                 variant="filled"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder={t("passwordPlaceholder")}
                 error={Boolean(formState.errors.password)}
                 helperText={formState.errors.password?.message}
                 fullWidth
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <IconButton
+                        onClick={() => setShowPassword(!showPassword)}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    ),
+                  },
+                }}
               />
             )}
           />

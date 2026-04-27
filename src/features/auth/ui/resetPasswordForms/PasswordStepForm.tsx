@@ -1,9 +1,13 @@
-import { Button, Input, Typography } from "@cw-game/react-ui";
+import { Button, IconButton, Typography } from "@cw-game/react-ui";
 import { useTranslations } from "next-intl";
 import { Controller, useForm } from "react-hook-form";
 import { createPasswordSchema } from "../../lib/validation/createPasswordSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Stack from "@mui/material/Stack";
+import { useState } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import TextField from "@mui/material/TextField";
 
 interface PasswordStepFormValues {
   password: string;
@@ -16,6 +20,7 @@ const PasswordStepForm = ({
 }) => {
   const t = useTranslations("ResetPasswordPage");
   const schema = createPasswordSchema(t.raw);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { control, handleSubmit, formState } = useForm<PasswordStepFormValues>({
     defaultValues: { password: "" },
@@ -31,15 +36,27 @@ const PasswordStepForm = ({
           control={control}
           name="password"
           render={({ field }) => (
-            <Input
+            <TextField
               {...field}
               variant="filled"
-              type="password"
+              type={showPassword ? "text" : "password"}
               size="medium"
               placeholder={t("passwordInputPlaceholder")}
               error={Boolean(formState.errors.password)}
               helperText={formState.errors.password?.message}
               fullWidth
+              slotProps={{
+                input: {
+                  endAdornment: (
+                    <IconButton
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  ),
+                },
+              }}
             />
           )}
         />
