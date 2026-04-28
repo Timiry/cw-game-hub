@@ -21,10 +21,14 @@ import { useSnackbar } from "@/entities/app-state";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createRegisterSchema } from "@/features/auth/lib/validation/createRegisterSchema";
 import type { HubError } from "@/shared/lib/api/HubError";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import TextField from "@mui/material/TextField";
+import { VkLoginButton } from "@/features/auth/ui/VkLoginButton";
+import { useSearchParams } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import AuthService from "@/features/auth/api/AuthService";
 
 interface LoginFormValues {
   email: string;
@@ -37,20 +41,42 @@ export const LoginPage = () => {
   const [openSnackbar] = useSnackbar();
   const [showPassword, setShowPassword] = useState(false);
 
+  const searchParams = useSearchParams();
+
   const schema = createRegisterSchema(t.raw);
   const { control, handleSubmit, formState } = useForm<LoginFormValues>({
     resolver: zodResolver(schema),
     mode: "onSubmit",
     defaultValues: { email: "", password: "" },
   });
+
+  const { mutateAsync: vkLoginQuery } = useMutation({
+    mutationFn: AuthService.vkLogin,
+  });
   const { isPending, mutateAsync: login } = useLogin();
+
+  const paramsHasSent = useRef(false);
+
+  useEffect(() => {
+    if (paramsHasSent.current || !searchParams || searchParams?.size === 0)
+      return;
+
+    paramsHasSent.current = true;
+    vkLoginQuery(searchParams)
+      .then(() => router.push(routes.serverList))
+      .catch((err) => {
+        openSnackbar({
+          message: t("genericError") + " " + (err as Error)?.toString?.(),
+        });
+      });
+  }, [searchParams, vkLoginQuery, router, openSnackbar, t]);
 
   const handleTelegramLogin = async (data: unknown) => {
     const user = await login({ telegram: data });
     if (window.opener) {
       postSuccessAuthMessage(user);
     } else {
-      router.push(routes.main);
+      router.push(routes.serverList);
     }
   };
 
@@ -144,8 +170,16 @@ export const LoginPage = () => {
             </Typography>
           </Link>
         </Grid>
-        <Grid alignSelf="center" mt="4px">
+        <Grid
+          mt="4px"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+          gap={2}
+        >
           <TelegramLoginButton onLogin={handleTelegramLogin} />
+          <VkLoginButton />
         </Grid>
         <Grid textAlign="center">
           <Typography variant="caption">

@@ -1,6 +1,7 @@
 const accountsEndpoints = {
   userProfile: "/v1/user-profile",
   login: "/v1/login",
+  vkLogin: "/v1/oauth/vk",
   register: "/v1/register",
   server: {
     list: "/v1/server/list",

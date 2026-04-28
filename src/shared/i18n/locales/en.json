@@ -12,7 +12,8 @@
     "passwordTooShort": "The password is too simple. Use more characters",
     "passwordTooLong": "The password is too long. Use fewer characters",
     "badCredentials": "Wrong email or password, please try again later.",
-    "internalError": "Internal server error, please try again later."
+    "internalError": "Internal server error, please try again later.",
+    "vkLogin": "Login with VK ID"
   },
   "RegisterPage": {
     "title": "Register",
