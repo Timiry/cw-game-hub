@@ -55,6 +55,10 @@ class AuthService {
   static async applyPassword(body: { code: string; password: string }) {
     return api.post(API_URL + accountsEndpoints.password.code.apply, body);
   }
+
+  static async vkLogin(params: URLSearchParams) {
+    return api.get(API_URL + accountsEndpoints.vkLogin + "?" + params);
+  }
 }
 
 export default AuthService;

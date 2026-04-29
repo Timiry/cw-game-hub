@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, FullscreenLoader } from "@cw-game/react-ui";
+import { Button, FullscreenLoader, IconButton } from "@cw-game/react-ui";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { Controller, useForm } from "react-hook-form";
@@ -15,6 +15,9 @@ import CardLayout from "@/shared/ui/CardLayout";
 import { useTranslations } from "next-intl";
 import { useSnackbar } from "@/entities/app-state";
 import type { HubError } from "@/shared/lib/api/HubError";
+import { useState } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 type RegisterFormValues = z.infer<ReturnType<typeof createRegisterSchema>>;
 
@@ -23,6 +26,7 @@ const RegisterPage = () => {
   const router = useRouter();
   const schema = createRegisterSchema(t.raw);
   const [openSnackbar] = useSnackbar();
+  const [showPassword, setShowPassword] = useState(false);
 
   const { control, handleSubmit, formState } = useForm<RegisterFormValues>({
     resolver: zodResolver(schema),
@@ -90,8 +94,20 @@ const RegisterPage = () => {
                 placeholder={t("passwordPlaceholder")}
                 error={Boolean(formState.errors.password)}
                 helperText={formState.errors.password?.message}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 fullWidth
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <IconButton
+                        onClick={() => setShowPassword(!showPassword)}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    ),
+                  },
+                }}
               />
             )}
           />

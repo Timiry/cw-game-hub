@@ -39,7 +39,7 @@ const TelegramLoginButton = ({ onLogin }: TelegramLoginButtonProps) => {
   return (
     <Box
       ref={telegramWrapperRef}
-      borderRadius="20px"
+      borderRadius="8px"
       height="40px"
       width="204px"
       boxShadow={(theme) => theme.shadows[3]}
