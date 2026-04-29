@@ -50,10 +50,11 @@ export const LoginPage = () => {
     defaultValues: { email: "", password: "" },
   });
 
-  const { mutateAsync: vkLoginQuery } = useMutation({
-    mutationFn: AuthService.vkLogin,
-  });
-  const { isPending, mutateAsync: login } = useLogin();
+  const { isPending: isVkLoginPending, mutateAsync: vkLoginQuery } =
+    useMutation({
+      mutationFn: AuthService.vkLogin,
+    });
+  const { isPending: isLoginPending, mutateAsync: login } = useLogin();
 
   const paramsHasSent = useRef(false);
 
@@ -111,7 +112,7 @@ export const LoginPage = () => {
 
   return (
     <CardLayout onSubmit={handleSubmit(handleAccountsLogin)} component="form">
-      {isPending && <FullscreenLoader />}
+      {(isVkLoginPending || isLoginPending) && <FullscreenLoader />}
       <Grid container direction="column" rowSpacing="8px">
         <Grid>
           <Controller
