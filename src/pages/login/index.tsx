@@ -56,13 +56,13 @@ export const LoginPage = () => {
     });
   const { isPending: isLoginPending, mutateAsync: login } = useLogin();
 
-  const paramsHasSent = useRef(false);
+  const paramsHasSentRef = useRef(false);
 
   useEffect(() => {
-    if (paramsHasSent.current || !searchParams || searchParams?.size === 0)
+    if (paramsHasSentRef.current || !searchParams || searchParams?.size === 0)
       return;
 
-    paramsHasSent.current = true;
+    paramsHasSentRef.current = true;
     vkLoginQuery(searchParams)
       .then(() => router.push(routes.serverList))
       .catch((err) => {
