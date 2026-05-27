@@ -1,6 +1,6 @@
 import accountsEndpoints from "@/shared/config/endpoints/accounts";
 import api from "@/shared/api";
-import type { UserProfile } from "@/entities/profile/model";
+import type { User } from "@/entities/user/model";
 
 interface RegisterBody {
   accounts: {
@@ -13,10 +13,7 @@ const API_URL = process.env.NEXT_PUBLIC_ACCOUNTS_URL;
 
 class AuthService {
   static async login(body: unknown) {
-    return api.post<{ data: UserProfile }>(
-      API_URL + accountsEndpoints.login,
-      body
-    );
+    return api.post<{ data: User }>(API_URL + accountsEndpoints.login, body);
   }
 
   static async register(body: RegisterBody) {

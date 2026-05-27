@@ -1,5 +1,5 @@
 const accountsEndpoints = {
-  userProfile: "/v1/user-profile",
+  user: "/v1/user",
   login: "/v1/login",
   vkLogin: "/v1/oauth/vk",
   register: "/v1/register",

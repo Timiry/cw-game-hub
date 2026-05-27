@@ -1,4 +1,4 @@
-export interface UserProfile {
+export interface User {
   id: number;
   confirmed: boolean;
   email?: string;
