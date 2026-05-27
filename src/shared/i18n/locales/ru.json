@@ -108,5 +108,18 @@
     "findUs": "Где нас найти",
     "footerText": "CW Game. Воплощено в жизнь командой CW Game и всеми, кто поддержал проект.",
     "poweredBy": "На базе"
+  },
+  "ProfilePage": {
+    "title": "Профиль",
+    "changeBackground": "Изменить задний фон",
+    "settings": "Настройки",
+    "registered": "Зарегистрирован(а)",
+    "lastVisit": "Последний визит",
+    "aboutMe": "Обо мне",
+    "contacts": "Связь со мной",
+    "worlds": "Миры",
+    "giftsListButton": "Список всех подарков",
+    "closeButton": "Закрыть",
+    "allGifts": "Подарки"
   }
 }
