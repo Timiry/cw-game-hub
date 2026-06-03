@@ -42,9 +42,20 @@ const api = {
   },
 
   async post<T, U = unknown>(url: string, data: U): Promise<T> {
+    const isFormData = data instanceof FormData;
     const response = await fetch(url, {
       ...BASE_INIT,
       method: "POST",
+      headers: isFormData ? {} : { ...BASE_INIT.headers },
+      body: isFormData ? (data as FormData) : JSON.stringify(data),
+    });
+    return handleResponse<T>(response);
+  },
+
+  async patch<T, U = unknown>(url: string, data: U): Promise<T> {
+    const response = await fetch(url, {
+      ...BASE_INIT,
+      method: "PATCH",
       body: JSON.stringify(data),
     });
     return handleResponse<T>(response);

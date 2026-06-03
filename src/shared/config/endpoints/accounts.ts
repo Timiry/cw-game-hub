@@ -18,6 +18,15 @@ const accountsEndpoints = {
       apply: "/v1/password/code/apply",
     },
   },
+  profile: {
+    current: "/v1/profile/",
+    byId: (userId: number) => `/v1/profile/${userId}`,
+    edit: "/v1/profile/edit",
+    photo: "/v1/profile/photo/",
+    background: "/v1/profile/background/",
+    gifts: "/v1/profile/gifts",
+    giftsByUser: (userId: number) => `/v1/profile/${userId}/gifts`,
+  },
 };
 
 export default accountsEndpoints;
