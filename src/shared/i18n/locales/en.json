@@ -119,6 +119,18 @@
     "worlds": "Worlds",
     "giftsListButton": "All gifts",
     "closeButton": "Close",
-    "allGifts": "Gifts"
+    "allGifts": "Gifts",
+    "giftIsHidden": "Gift is hidden by recipient",
+    "show": "Show to other users",
+    "hide": "Hide from other users",
+    "giftUpdatedSuccess": "Gift updated successfully",
+    "giftUpdatedError": "Error updating gift",
+    "selectBackground": "Select a background image",
+    "backgroundChangedSuccess": "Background changed successfully",
+    "backgroundChangedError": "Error changing background",
+    "cancel": "Cancel",
+    "saveBackground": "Apply",
+    "failedToFetch": "Failed to fetch profile. Please try again later",
+    "nameFallback": "Nameless"
   }
 }

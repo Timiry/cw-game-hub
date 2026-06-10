@@ -55,6 +55,22 @@ export const useUserGiftsById = (
   });
 };
 
+export const useProfileGiftsList = (
+  isProfileMine: boolean,
+  userId: number,
+  size?: number,
+  page?: number
+) => {
+  return useQuery({
+    queryKey: [QueryKeys.Gifts, isProfileMine, userId, size, page],
+    queryFn: () =>
+      isProfileMine
+        ? ProfileService.getProfileGifts(size, page)
+        : ProfileService.getProfileGiftsByUserId(userId, size, page),
+    select: (res) => res.data,
+  });
+};
+
 // ==========================================
 // MUTATIONS
 // ==========================================
