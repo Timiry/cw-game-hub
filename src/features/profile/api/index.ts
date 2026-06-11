@@ -1,7 +1,6 @@
 import accountsEndpoints from "@/shared/config/endpoints/accounts";
 import api from "@/shared/api";
 
-// Импортируем типы, сгенерированные из спецификации
 import type {
   GetProfileResponse,
   UpdateProfileResponse,
@@ -18,26 +17,17 @@ import type {
 const API_URL = process.env.NEXT_PUBLIC_ACCOUNTS_URL;
 
 class ProfileService {
-  /**
-   * Получить профиль текущего пользователя
-   */
   static async getCurrentUserProfile() {
     return api.get<GetProfileResponse>(
       API_URL + accountsEndpoints.profile.current
     );
   }
 
-  /**
-   * Получить профиль пользователя по ID
-   */
   static async getUserProfileById(userId: number) {
     const url = API_URL + accountsEndpoints.profile.byId(userId);
     return api.get<GetProfileResponse>(url);
   }
 
-  /**
-   * Редактировать профиль пользователя
-   */
   static async updateUserProfile(body: UpdateUserProfileRequest) {
     return api.patch<UpdateProfileResponse>(
       API_URL + accountsEndpoints.profile.edit,
@@ -45,15 +35,11 @@ class ProfileService {
     );
   }
 
-  /**
-   * Загрузить/обновить фото профиля
-   */
   static async uploadProfilePhoto(file: File) {
     const formData = new FormData();
-    // Имя поля 'photo' строго соответствует спецификации
     formData.append("photo", file);
 
-    return api.post<UploadPhotoResponse>(
+    return api.postMultipartFormData<UploadPhotoResponse>(
       API_URL + accountsEndpoints.profile.photo,
       formData
     );
@@ -72,9 +58,6 @@ class ProfileService {
     );
   }
 
-  /**
-   * Выбрать фоновое изображение
-   */
   static async selectBackgroundImage(body: SelectBackgroundRequest) {
     return api.post<BackgroundImageResponse>(
       API_URL + accountsEndpoints.profile.background,
@@ -96,7 +79,7 @@ class ProfileService {
   }
 
   /**
-   * Обновить подарок (скрыть/изменить порядок)
+   * Обновить подарок (скрыть/открыть)
    */
   static async updateProfileGift(body: UpdateGiftRequest) {
     return api.patch<GiftResponse>(

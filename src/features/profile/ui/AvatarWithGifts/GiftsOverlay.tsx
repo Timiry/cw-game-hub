@@ -15,6 +15,8 @@ interface GiftsOverlayProps {
   userId: number;
 }
 
+const PAGE_SIZE = 5;
+
 export const GiftsOverlay = ({
   gifts,
   isProfileMine,
@@ -25,13 +27,12 @@ export const GiftsOverlay = ({
   const [page, setPage] = useState(0);
   const [openSnackbar] = useSnackbar();
 
-  const GIFTS_PER_PAGE = 5;
   const t = useTranslations("ProfilePage");
 
   const { data: giftsData } = useProfileGiftsList(
     isProfileMine,
     userId,
-    GIFTS_PER_PAGE,
+    PAGE_SIZE,
     page
   );
 

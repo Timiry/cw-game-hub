@@ -81,7 +81,6 @@ export const useUpdateProfile = () => {
     mutationFn: (body: UpdateUserProfileRequest) =>
       ProfileService.updateUserProfile(body),
     onSuccess: () => {
-      // После успеха обновляем кэш профиля, чтобы UI сразу отобразил новые данные
       queryClient.invalidateQueries({ queryKey: [QueryKeys.UserProfile] });
     },
   });

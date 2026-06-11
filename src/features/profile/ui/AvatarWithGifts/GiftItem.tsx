@@ -20,7 +20,14 @@ export const GiftItem = ({
         sx={{ aspectRatio: "1/1" }}
         onClick={handleClick}
       >
-        <Image src={gift.imageUrl} alt="gift" fill />
+        <Image
+          src={gift.imageUrl}
+          alt="gift"
+          fill
+          style={{
+            objectFit: "cover",
+          }}
+        />
       </Box>
     </GiftTooltip>
   );

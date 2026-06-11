@@ -122,6 +122,8 @@ const GiftsListModal = ({
                 page={page + 1}
                 onChange={(_, newPage) => onPageChange(newPage - 1)}
                 color="primary"
+                siblingCount={0}
+                boundaryCount={1}
               />
             </Box>
           )}

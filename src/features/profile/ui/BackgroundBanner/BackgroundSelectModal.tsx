@@ -84,12 +84,14 @@ const BackgroundSelectModal = ({
           </Stack>
 
           {totalPages > 1 && (
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
+            <Box display="flex" justifyContent="center" mt={3}>
               <Pagination
                 count={totalPages}
                 page={page + 1}
                 onChange={(_, newPage) => onPageChange(newPage - 1)}
                 color="primary"
+                siblingCount={0}
+                boundaryCount={1}
               />
             </Box>
           )}

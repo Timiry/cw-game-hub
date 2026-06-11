@@ -1,8 +1,5 @@
 "use client";
 
-// import routes from "@/shared/config/routes";
-// import { useRouter } from "next/navigation";
-// import Button from "@mui/material/Button";
 import { Typography, Paper } from "@cw-game/react-ui";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -11,15 +8,13 @@ import { Stack } from "@mui/material";
 import type { UserProfile } from "@/entities/profile/model";
 import { BackgroundBannerContainer } from "../BackgroundBanner/styles";
 import BackgroundBannerSettings from "@/features/profile/ui/BackgroundBanner/BackgroundBannerSettings";
-// import SettingsIcon from "@mui/icons-material/Settings";
-// import useMediaQuery from "@mui/material/useMediaQuery";
-// import { useTheme } from "@mui/material/styles";
 import { AvatarWithGifts } from "../AvatarWithGifts";
-import { formatDateTime } from "@/shared/lib/date/formatDateTime";
 import { getPronounLabel } from "../../lib/getPronounLabel";
 import { ContactsList } from "../ContactsList";
 import { VisitedWorldsList } from "../VisitedWorldsList";
 import { Quote } from "./styles";
+import { format } from "date-fns";
+// import SettingsButton from "../SettingsButton";
 
 interface ProfileViewProps {
   profile: UserProfile;
@@ -28,10 +23,7 @@ interface ProfileViewProps {
 
 const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
   const t = useTranslations("ProfilePage");
-  // const theme = useTheme();
-  // const isMobile = useMediaQuery(theme.breakpoints.down("desktop"));
   const locale = useLocale();
-  // const router = useRouter();
 
   return (
     <Box>
@@ -71,14 +63,7 @@ const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
             )}
           </Box>
 
-          {/* <Box>
-            {isProfileMine && (
-              <Button onClick={() => router.push(routes.myProfileSettings)}>
-                <SettingsIcon />
-                {!isMobile && <Typography ml={1}>{t("settings")}</Typography>}
-              </Button>
-            )}
-          </Box> */}
+          {/* <Box>{isProfileMine && <SettingsButton />}</Box> */}
         </Stack>
 
         <Stack direction={{ mobile: "column", desktop: "row-reverse" }}>
@@ -94,7 +79,7 @@ const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
                 {t("registered")}{" "}
                 <Typography component="span" color="textPrimary">
                   {profile.registrationTime
-                    ? formatDateTime(profile.registrationTime)
+                    ? format(new Date(profile.registrationTime), "dd.MM.yyyy")
                     : "-"}
                 </Typography>
               </Typography>
@@ -103,7 +88,10 @@ const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
                 {t("lastVisit")}{" "}
                 <Typography component="span" color="textPrimary">
                   {profile.lastActivityTime
-                    ? formatDateTime(profile.lastActivityTime)
+                    ? format(
+                        new Date(profile.lastActivityTime),
+                        "dd.MM.yyyy HH:mm"
+                      )
                     : "-"}
                 </Typography>
               </Typography>
