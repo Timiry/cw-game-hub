@@ -2,8 +2,9 @@
 
 import { GiftsOverlay } from "./GiftsOverlay";
 import type { Gift, UserProfile } from "@/entities/profile/model";
-import Image from "next/image";
+// import Image from "next/image";
 import { AvatarContainer } from "./styles";
+import Avatar from "@mui/material/Avatar";
 
 interface AvatarWithGiftsProps {
   profile: UserProfile;
@@ -22,12 +23,13 @@ export const AvatarWithGifts = ({
 
   return (
     <AvatarContainer>
-      <Image
+      <Avatar
         src={profile.photo || "/avatar-fallback.svg"}
-        alt={"avatar"}
-        fill
-        style={{
-          objectFit: "contain",
+        alt={profile.name}
+        variant="rounded"
+        sx={{
+          width: "100%",
+          height: "100%",
         }}
       />
 

@@ -50,7 +50,7 @@ export const GiftItemWrapper = styled(Box, {
 
   return {
     position: "absolute",
-    bottom: "-15%",
+    bottom: "-25%",
     width: $position === "center" ? "25%" : "30%",
     height: "auto",
     ...positionStyles[$position],
