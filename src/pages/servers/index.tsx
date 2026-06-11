@@ -11,7 +11,7 @@ import NextLink from "next/link";
 
 import { useStore } from "@/entities/app-state";
 import routes from "@/shared/config/routes";
-import { useUserProfile } from "@/entities/profile";
+import { useUser } from "@/entities/user";
 import useServerList from "@/features/servers/lib/hooks/useServerList";
 import CardLayout from "@/shared/ui/CardLayout";
 import { AddIcon } from "@/shared/ui/icons";
@@ -31,7 +31,7 @@ const ServerListPage = observer(() => {
     error: userError,
     isLoading: isUserProfileLoading,
     isError: isUserProfileError,
-  } = useUserProfile();
+  } = useUser();
   const {
     data: servers,
     isLoading: isLoadingServers,

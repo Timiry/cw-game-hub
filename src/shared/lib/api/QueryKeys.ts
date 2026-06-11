@@ -1,5 +1,8 @@
 export enum QueryKeys {
   ServerList = "server-list",
-  UserProfile = "user-profile",
+  User = "user",
   ServerInfo = "server-info",
+  UserProfile = "user-profile",
+  Backgrounds = "backgrounds",
+  Gifts = "gifts",
 }

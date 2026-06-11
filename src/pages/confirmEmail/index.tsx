@@ -17,7 +17,7 @@ import Collapse from "@mui/material/Collapse";
 import Stack from "@mui/material/Stack";
 import { useSnackbar } from "@/entities/app-state";
 import CardLayout from "@/shared/ui/CardLayout";
-import useUserProfile from "@/entities/profile/lib/hooks/useUserProfile";
+import useUser from "@/entities/user/lib/hooks/useUser";
 import AuthService from "@/features/auth/api/AuthService";
 import type { HubError } from "@/shared/lib/api/HubError";
 import routes from "@/shared/config/routes";
@@ -50,7 +50,7 @@ const ConfirmEmailPage = () => {
     data: user,
     isLoading: isUserProfileLoading,
     isError: isUserProfileError,
-  } = useUserProfile();
+  } = useUser();
   const { isPending: isLoadingSendCode, mutateAsync: sendCodeMutation } =
     useMutation({
       mutationFn: AuthService.sendEmailCode,

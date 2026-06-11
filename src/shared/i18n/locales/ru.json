@@ -108,5 +108,30 @@
     "findUs": "Где нас найти",
     "footerText": "CW Game. Воплощено в жизнь командой CW Game и всеми, кто поддержал проект.",
     "poweredBy": "На базе"
+  },
+  "ProfilePage": {
+    "title": "Профиль",
+    "changeBackground": "Изменить задний фон",
+    "settings": "Настройки",
+    "registered": "Зарегистрирован(а)",
+    "lastVisit": "Последний визит",
+    "aboutMe": "Обо мне",
+    "contacts": "Связь со мной",
+    "worlds": "Миры",
+    "giftsListButton": "Список всех подарков",
+    "closeButton": "Закрыть",
+    "allGifts": "Подарки",
+    "giftIsHidden": "Подарок скрыт получателем",
+    "show": "Показывать другим пользователям",
+    "hide": "Скрыть от других пользователей",
+    "giftUpdatedSuccess": "Подарок успешно обновлен",
+    "giftUpdatedError": "Ошибка при обновлении подарка",
+    "selectBackground": "Выберите фоновое изображение",
+    "backgroundChangedSuccess": "Фон успешно изменён",
+    "backgroundChangedError": "Ошибка при смене фона",
+    "cancel": "Отмена",
+    "saveBackground": "Применить",
+    "failedToFetch": "Не удалось загрузить профиль. Попробуйте позже",
+    "nameFallback": "Без имени"
   }
 }

@@ -49,6 +49,25 @@ const api = {
     });
     return handleResponse<T>(response);
   },
+
+  async patch<T, U = unknown>(url: string, data: U): Promise<T> {
+    const response = await fetch(url, {
+      ...BASE_INIT,
+      method: "PATCH",
+      body: JSON.stringify(data),
+    });
+    return handleResponse<T>(response);
+  },
+
+  async postMultipartFormData<T>(url: string, formData: FormData): Promise<T> {
+    const response = await fetch(url, {
+      ...BASE_INIT,
+      method: "POST",
+      headers: {},
+      body: formData,
+    });
+    return handleResponse<T>(response);
+  },
 };
 
 export default api;

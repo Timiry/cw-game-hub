@@ -1,7 +1,7 @@
-import type { UserProfile } from "@/entities/profile/model";
+import type { User } from "@/entities/user/model";
 import { isClient } from "@/shared/consts";
 
-export const postSuccessAuthMessage = (user: { data: UserProfile }) => {
+export const postSuccessAuthMessage = (user: { data: User }) => {
   if (isClient) {
     window.opener.postMessage(
       {

@@ -107,5 +107,30 @@
     "findUs": "Find us",
     "footerText": "CW Game. A labour of love by the CW Game team and all who care.",
     "poweredBy": "Powered by"
+  },
+  "ProfilePage": {
+    "title": "Profile",
+    "changeBackground": "Change background",
+    "settings": "Settings",
+    "registered": "Registered",
+    "lastVisit": "Last visit",
+    "aboutMe": "About me",
+    "contacts": "Contact me",
+    "worlds": "Worlds",
+    "giftsListButton": "All gifts",
+    "closeButton": "Close",
+    "allGifts": "Gifts",
+    "giftIsHidden": "Gift is hidden by recipient",
+    "show": "Show to other users",
+    "hide": "Hide from other users",
+    "giftUpdatedSuccess": "Gift updated successfully",
+    "giftUpdatedError": "Error updating gift",
+    "selectBackground": "Select a background image",
+    "backgroundChangedSuccess": "Background changed successfully",
+    "backgroundChangedError": "Error changing background",
+    "cancel": "Cancel",
+    "saveBackground": "Apply",
+    "failedToFetch": "Failed to fetch profile. Please try again later",
+    "nameFallback": "Nameless"
   }
 }
