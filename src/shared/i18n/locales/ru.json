@@ -138,6 +138,7 @@
     "backgroundChangedError": "Ошибка при смене фона",
     "cancel": "Отмена",
     "saveBackground": "Применить",
+    "reset": "Сбросить",
     "failedToFetch": "Не удалось загрузить профиль. Попробуйте позже",
     "nameFallback": "Без имени"
   }

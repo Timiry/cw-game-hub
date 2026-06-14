@@ -33,7 +33,8 @@ export const GiftsOverlay = ({
     isProfileMine,
     userId,
     PAGE_SIZE,
-    page
+    page,
+    modalOpen
   );
 
   const giftsList = giftsData?.content || [];

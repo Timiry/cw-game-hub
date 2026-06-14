@@ -180,7 +180,7 @@ export interface UpdateUserProfileRequest {
 
 export interface SelectBackgroundRequest {
   /** ID выбранного фона */
-  backgroundId: number;
+  backgroundId: number | null;
 }
 
 export interface UpdateGiftRequest {

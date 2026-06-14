@@ -31,7 +31,7 @@ const BackgroundBannerSettings = ({
   >(null);
   const [page, setPage] = useState(0);
 
-  const { data: backgroundsData } = useBackgroundImages(PAGE_SIZE, page);
+  const { data: backgroundsData } = useBackgroundImages(PAGE_SIZE, page, open);
   const selectBackgroundMutation = useSelectBackground();
   const [openSnackbar] = useSnackbar();
 
@@ -49,18 +49,18 @@ const BackgroundBannerSettings = ({
     setSelectedBackgroundId(null);
   };
 
-  const handleSelectBackground = (backgroundId: number) => {
+  const handleSelectBackground = (backgroundId: number | null) => {
     setSelectedBackgroundId(backgroundId);
   };
 
-  const handleConfirm = () => {
-    if (!selectedBackgroundId || selectedBackgroundId === backgroundId) {
+  const handleConfirm = (id: number | null) => {
+    if (id === backgroundId) {
       handleCloseModal();
       return;
     }
 
     selectBackgroundMutation.mutate(
-      { backgroundId: selectedBackgroundId },
+      { backgroundId: id },
       {
         onSuccess: () => {
           openSnackbar({

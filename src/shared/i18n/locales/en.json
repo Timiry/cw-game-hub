@@ -137,6 +137,7 @@
     "backgroundChangedError": "Error changing background",
     "cancel": "Cancel",
     "saveBackground": "Apply",
+    "reset": "Reset",
     "failedToFetch": "Failed to fetch profile. Please try again later",
     "nameFallback": "Nameless"
   }

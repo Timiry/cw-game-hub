@@ -12,21 +12,19 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
-import CheckIcon from "@mui/icons-material/Check";
-import CloseIcon from "@mui/icons-material/Close";
 import { BackgroundItemCard } from "./styles";
 
 interface BackgroundSelectModalProps {
   open: boolean;
   onClose: () => void;
   selectedBackgroundId: number | null;
-  onSelectBackground: (backgroundId: number) => void;
+  onSelectBackground: (backgroundId: number | null) => void;
   backgrounds: BackgroundImage[];
   totalPages: number;
   page: number;
   onPageChange: (page: number) => void;
   currentBackgroundId?: number;
-  onConfirm: () => void;
+  onConfirm: (backgroundId: number | null) => void;
 }
 
 const BackgroundSelectModal = ({
@@ -99,13 +97,21 @@ const BackgroundSelectModal = ({
       </DialogContent>
 
       <DialogActions sx={{ px: 3, pb: 3 }}>
-        <Button onClick={onClose} variant="outlined" startIcon={<CloseIcon />}>
+        <Button onClick={onClose} variant="outlined">
           {t("cancel")}
         </Button>
         <Button
-          onClick={onConfirm}
+          variant="outlined"
+          onClick={() => {
+            onConfirm(null);
+          }}
+          disabled={currentBackgroundId === null}
+        >
+          {t("reset")}
+        </Button>
+        <Button
+          onClick={() => onConfirm(selectedBackgroundId)}
           variant="contained"
-          startIcon={<CheckIcon />}
           disabled={selectedBackgroundId === currentBackgroundId}
         >
           {t("saveBackground")}
