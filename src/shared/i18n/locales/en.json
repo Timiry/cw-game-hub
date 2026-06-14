@@ -108,6 +108,13 @@
     "footerText": "CW Game. A labour of love by the CW Game team and all who care.",
     "poweredBy": "Powered by"
   },
+    "Header": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "signOutError": "Error when logging out of the account",
+    "profile": "Profile",
+    "nameFallback": "Nameless"
+  },
   "ProfilePage": {
     "title": "Profile",
     "changeBackground": "Change background",

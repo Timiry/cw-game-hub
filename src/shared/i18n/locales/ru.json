@@ -109,6 +109,13 @@
     "footerText": "CW Game. Воплощено в жизнь командой CW Game и всеми, кто поддержал проект.",
     "poweredBy": "На базе"
   },
+  "Header": {
+    "signIn": "Войти",
+    "signOut": "Выйти",
+    "signOutError": "Ошибка при выходе из аккаунта",
+    "profile": "Профиль",
+    "nameFallback": "Без имени"
+  },
   "ProfilePage": {
     "title": "Профиль",
     "changeBackground": "Изменить задний фон",
