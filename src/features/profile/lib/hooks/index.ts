@@ -1,4 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  skipToken,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import ProfileService from "@/features/profile/api";
 import { QueryKeys } from "@/shared/lib/api/QueryKeys";
 import type {
@@ -27,18 +32,30 @@ export const useUserProfileById = (userId: number) => {
   });
 };
 
-export const useBackgroundImages = (size?: number, page?: number) => {
+export const useBackgroundImages = (
+  size?: number,
+  page?: number,
+  enabled?: boolean
+) => {
   return useQuery({
     queryKey: [QueryKeys.Backgrounds, size, page],
-    queryFn: () => ProfileService.getBackgroundImages(size, page),
+    queryFn: enabled
+      ? () => ProfileService.getBackgroundImages(size, page)
+      : skipToken,
     select: (response) => response.data,
   });
 };
 
-export const useCurrentUserGifts = (size?: number, page?: number) => {
+export const useCurrentUserGifts = (
+  size?: number,
+  page?: number,
+  enabled?: boolean
+) => {
   return useQuery({
     queryKey: [QueryKeys.Gifts, size, page],
-    queryFn: () => ProfileService.getProfileGifts(size, page),
+    queryFn: enabled
+      ? () => ProfileService.getProfileGifts(size, page)
+      : skipToken,
     select: (response) => response.data,
   });
 };
@@ -59,14 +76,17 @@ export const useProfileGiftsList = (
   isProfileMine: boolean,
   userId: number,
   size?: number,
-  page?: number
+  page?: number,
+  enabled?: boolean
 ) => {
   return useQuery({
     queryKey: [QueryKeys.Gifts, isProfileMine, userId, size, page],
-    queryFn: () =>
-      isProfileMine
-        ? ProfileService.getProfileGifts(size, page)
-        : ProfileService.getProfileGiftsByUserId(userId, size, page),
+    queryFn: enabled
+      ? () =>
+          isProfileMine
+            ? ProfileService.getProfileGifts(size, page)
+            : ProfileService.getProfileGiftsByUserId(userId, size, page)
+      : skipToken,
     select: (res) => res.data,
   });
 };

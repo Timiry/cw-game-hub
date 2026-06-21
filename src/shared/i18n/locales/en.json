@@ -47,6 +47,7 @@
     "invalidCode": "Invalid code",
     "internalError": "Internal server error, please try again later.",
     "attemptsLimit": "Too many attempts to enter the confirmation code",
+    "notFoundCode": "The confirmation code has not been sent, please try again.",
     "alreadyExistError": "The user with this email already exists."
 },
   "ServerListPage": {
@@ -108,6 +109,13 @@
     "footerText": "CW Game. A labour of love by the CW Game team and all who care.",
     "poweredBy": "Powered by"
   },
+    "Header": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "signOutError": "Error when logging out of the account",
+    "profile": "Profile",
+    "nameFallback": "Nameless"
+  },
   "ProfilePage": {
     "title": "Profile",
     "changeBackground": "Change background",
@@ -130,7 +138,38 @@
     "backgroundChangedError": "Error changing background",
     "cancel": "Cancel",
     "saveBackground": "Apply",
+    "reset": "Reset",
     "failedToFetch": "Failed to fetch profile. Please try again later",
     "nameFallback": "Nameless"
+  },
+  "ProfileSettingsPage": {
+    "title": "Profile Settings",
+    "profileAppearance": "Profile appearance",
+    "upload": "Upload photo",
+    "invalidFileType": "Please select an image",
+    "fileTooLarge": "File is too large (max 1MB)",
+    "name": "Name",
+    "nameFallback": "Nameless",
+    "quote": "Quote",
+    "quotePlaceholder": "Favorite quote",
+    "pronoun": "Pronoun",
+    "aboutMe": "About me",
+    "contacts": "Contact me",
+    "hideVisitedWorlds": "Hide visited worlds",
+    "noGiftsYet": "You don't have any gifts yet :(",
+    "giftsModalTitle": "Here you can customize how gifts are arranged in your profile",
+    "notSelected": "Not selected",
+    "save": "Save",
+    "savedSuccess": "Profile updated successfully",
+    "savedError": "Error updating profile",
+    "photoUploadSuccess": "Photo updated successfully",
+    "photoUploadError": "Error updating photo",
+    "nameRequired": "Name is required",
+    "nameTooLong": "Name cannot be longer than 30 characters",
+    "quoteTooLong": "Quote cannot be longer than 90 characters",
+    "aboutMeTooLong": "The text in the 'About me' section is too long. Please use fewer characters",
+    "invalidUrl": "Invalid URL",
+    "invalidVkLink": "Invalid VK profile link",
+    "invalidTelegramLink": "Invalid Telegram profile link"
   }
 }

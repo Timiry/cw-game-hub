@@ -1,0 +1,21 @@
+"use client";
+
+import Box from "@mui/material/Box";
+import DOMPurify from "dompurify";
+
+const SafeHtml = ({ html }: { html: string }) => {
+  const sanitized = DOMPurify.sanitize(html);
+
+  return (
+    <Box
+      className="rich-text-content"
+      sx={{
+        "& a": { color: "primary.main" },
+        "& img": { maxWidth: "100%", height: "auto" },
+      }}
+      dangerouslySetInnerHTML={{ __html: sanitized }}
+    />
+  );
+};
+
+export default SafeHtml;

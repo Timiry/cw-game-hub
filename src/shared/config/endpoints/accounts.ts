@@ -1,6 +1,7 @@
 const accountsEndpoints = {
   user: "/v1/user",
   login: "/v1/login",
+  logout: "/v1/logout",
   vkLogin: "/v1/oauth/vk",
   register: "/v1/register",
   server: {

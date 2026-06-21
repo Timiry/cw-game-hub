@@ -161,13 +161,13 @@ export interface UpdateUserProfileRequest {
   /** Новое имя пользователя */
   name: string;
   /** Новая цитата пользователя */
-  quote?: string;
+  quote: string | null;
   /** Новые местоимения */
-  pronouns?: PronounsEnum;
+  pronouns: PronounsEnum | null;
   /** Новые контакты пользователя (максимум 4 элемента) */
   contacts: Contacts[];
   /** Новая информация о пользователе */
-  aboutMe?: string;
+  aboutMe: string | null;
   /** Скрыть список посещённых миров от других пользователей */
   visitedWorldsHidden: boolean;
   /** ID первого подарка в профиле */
@@ -180,7 +180,7 @@ export interface UpdateUserProfileRequest {
 
 export interface SelectBackgroundRequest {
   /** ID выбранного фона */
-  backgroundId: number;
+  backgroundId: number | null;
 }
 
 export interface UpdateGiftRequest {

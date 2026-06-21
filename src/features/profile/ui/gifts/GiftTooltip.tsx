@@ -65,7 +65,7 @@ export const GiftTooltip = ({ gift, children }: GiftTooltipProps) => {
         },
       }}
     >
-      <Box sx={{ cursor: "pointer", pointerEvents: "auto" }}>{children}</Box>
+      <Box>{children}</Box>
     </Tooltip>
   );
 };

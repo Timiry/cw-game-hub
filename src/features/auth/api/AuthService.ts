@@ -56,6 +56,10 @@ class AuthService {
   static async vkLogin(params: URLSearchParams) {
     return api.get(API_URL + accountsEndpoints.vkLogin + "?" + params);
   }
+
+  static async logout() {
+    return api.post(API_URL + accountsEndpoints.logout, {});
+  }
 }
 
 export default AuthService;

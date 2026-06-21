@@ -15,7 +15,7 @@ const Snackbar = observer(() => {
     <MUISnackbar
       open={store.snackbar.open}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      autoHideDuration={15000}
+      autoHideDuration={4000}
       onClose={close}
     >
       <Alert

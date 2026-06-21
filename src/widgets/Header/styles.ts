@@ -8,7 +8,10 @@ export const StyledHeader = styled("header")(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: "12px 24px",
+  padding: "12px 12px",
+  [theme.breakpoints.up("tablet")]: {
+    padding: "12px 24px",
+  },
   [theme.breakpoints.up("desktop")]: {
     padding: "12px 70px",
   },

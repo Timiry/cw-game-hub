@@ -109,6 +109,13 @@
     "footerText": "CW Game. Воплощено в жизнь командой CW Game и всеми, кто поддержал проект.",
     "poweredBy": "На базе"
   },
+  "Header": {
+    "signIn": "Войти",
+    "signOut": "Выйти",
+    "signOutError": "Ошибка при выходе из аккаунта",
+    "profile": "Профиль",
+    "nameFallback": "Без имени"
+  },
   "ProfilePage": {
     "title": "Профиль",
     "changeBackground": "Изменить задний фон",
@@ -131,7 +138,38 @@
     "backgroundChangedError": "Ошибка при смене фона",
     "cancel": "Отмена",
     "saveBackground": "Применить",
+    "reset": "Сбросить",
     "failedToFetch": "Не удалось загрузить профиль. Попробуйте позже",
     "nameFallback": "Без имени"
+  },
+  "ProfileSettingsPage": {
+    "title": "Настройки профиля",
+    "profileAppearance": "Внешний вид",
+    "upload": "Загрузить фото",
+    "invalidFileType": "Пожалуйста, выберите изображение",
+    "fileTooLarge": "Файл слишком большой (максимум 1MB)",
+    "name": "Имя",
+    "nameFallback": "Без имени",
+    "quote": "Цитата",
+    "quotePlaceholder": "Любимая цитата",
+    "pronoun": "Местоимение",
+    "aboutMe": "Обо мне",
+    "contacts": "Связь со мной",
+    "hideVisitedWorlds": "Скрывать посещенные миры",
+    "noGiftsYet": "У вас пока нет подарков :(",
+    "giftsModalTitle": "Здесь вы можете настроить, как располагаются подарки в вашем профиле",
+    "notSelected": "Не выбрано",
+    "save": "Сохранить",
+    "savedSuccess": "Профиль успешно обновлен",
+    "savedError": "Ошибка при обновлении профиля",
+    "photoUploadSuccess": "Фотография успешно обновлена",
+    "photoUploadError": "Ошибка при обновлении фотографии",
+    "nameRequired": "Имя обязательно",
+    "nameTooLong": "Имя не может быть длиннее 30 символов",
+    "quoteTooLong": "Цитата не может быть длиннее 90 символов",
+    "aboutMeTooLong": "Слишком длинный текст в разделе 'Обо мне'. Пожалуйста, используйте меньше символов",
+    "invalidUrl": "Некорректная ссылка",
+    "invalidVkLink": "Некорректная ссылка на VK профиль",
+    "invalidTelegramLink": "Некорректная ссылка на Telegram профиль"
   }
 }
