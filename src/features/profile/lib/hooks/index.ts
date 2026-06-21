@@ -46,10 +46,16 @@ export const useBackgroundImages = (
   });
 };
 
-export const useCurrentUserGifts = (size?: number, page?: number) => {
+export const useCurrentUserGifts = (
+  size?: number,
+  page?: number,
+  enabled?: boolean
+) => {
   return useQuery({
     queryKey: [QueryKeys.Gifts, size, page],
-    queryFn: () => ProfileService.getProfileGifts(size, page),
+    queryFn: enabled
+      ? () => ProfileService.getProfileGifts(size, page)
+      : skipToken,
     select: (response) => response.data,
   });
 };

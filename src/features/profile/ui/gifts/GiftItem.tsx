@@ -3,23 +3,21 @@
 import type { Gift } from "@/entities/profile/model";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import { GiftTooltip } from "./GiftTooltip";
 
-export const GiftItem = ({
-  gift,
-  handleClick,
-}: {
-  gift: Gift;
+interface GiftItemProps {
+  gift: Gift | null;
   handleClick: () => void;
-}) => {
+}
+
+export const GiftItem = ({ gift, handleClick }: GiftItemProps) => {
   return (
-    <GiftTooltip gift={gift}>
-      <Box
-        position="relative"
-        width="100%"
-        sx={{ aspectRatio: "1/1" }}
-        onClick={handleClick}
-      >
+    <Box
+      position="relative"
+      width="100%"
+      sx={{ aspectRatio: "1/1" }}
+      onClick={handleClick}
+    >
+      {gift && (
         <Image
           src={gift.imageUrl}
           alt="gift"
@@ -28,7 +26,7 @@ export const GiftItem = ({
             objectFit: "cover",
           }}
         />
-      </Box>
-    </GiftTooltip>
+      )}
+    </Box>
   );
 };

@@ -7,14 +7,15 @@ import { useTranslations, useLocale } from "next-intl";
 import { Stack } from "@mui/material";
 import type { UserProfile } from "@/entities/profile/model";
 import { BackgroundBannerContainer } from "../BackgroundBanner/styles";
-import BackgroundBannerSettings from "@/features/profile/ui/BackgroundBanner/BackgroundBannerSettings";
+import BackgroundBannerSettings from "@/features/profile/ui/view/BackgroundBanner/BackgroundBannerSettings";
 import { AvatarWithGifts } from "../AvatarWithGifts";
-import { getPronounLabel } from "../../lib/getPronounLabel";
+import { getPronounLabel } from "../../../lib/getPronounLabel";
 import { ContactsList } from "../ContactsList";
 import { VisitedWorldsList } from "../VisitedWorldsList";
 import { Quote } from "./styles";
 import { format } from "date-fns";
-// import SettingsButton from "../SettingsButton";
+import SettingsButton from "../SettingsButton";
+import SafeHtml from "@/shared/ui/SafeHtml";
 
 interface ProfileViewProps {
   profile: UserProfile;
@@ -63,7 +64,7 @@ const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
             )}
           </Box>
 
-          {/* <Box>{isProfileMine && <SettingsButton />}</Box> */}
+          <Box>{isProfileMine && <SettingsButton />}</Box>
         </Stack>
 
         <Stack direction={{ mobile: "column", desktop: "row-reverse" }}>
@@ -104,11 +105,9 @@ const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
                 <Typography variant="h5" gutterBottom>
                   {t("aboutMe")}
                 </Typography>
-                <Paper
-                  component={Box}
-                  p={3}
-                  dangerouslySetInnerHTML={{ __html: profile.aboutMe }}
-                ></Paper>
+                <Paper component={Box} p={3}>
+                  <SafeHtml html={profile.aboutMe} />
+                </Paper>
               </Box>
             )}
           </Box>

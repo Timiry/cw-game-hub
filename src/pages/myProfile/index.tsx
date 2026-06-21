@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { FullscreenLoader } from "@cw-game/react-ui";
 
 import { useCurrentUserProfile } from "@/features/profile/lib/hooks";
-import ProfileView from "@/features/profile/ui/ProfileView";
+import ProfileView from "@/features/profile/ui/view/ProfileView";
 import { useTranslations } from "next-intl";
 
 const MyProfilePage = () => {

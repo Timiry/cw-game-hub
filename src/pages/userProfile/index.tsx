@@ -3,7 +3,7 @@
 import Typography from "@mui/material/Typography";
 import { FullscreenLoader } from "@cw-game/react-ui";
 
-import ProfileView from "@/features/profile/ui/ProfileView";
+import ProfileView from "@/features/profile/ui/view/ProfileView";
 import { useUserProfileById } from "@/features/profile/lib/hooks";
 import { useParams } from "next/dist/client/components/navigation";
 import { useTranslations } from "next-intl";
