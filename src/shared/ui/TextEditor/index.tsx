@@ -4,6 +4,7 @@ import { useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import Box from "@mui/material/Box";
 import { useLocale } from "next-intl";
+import { cleanEmptyHtml } from "@/shared/lib/html/cleamEmptyHtml";
 
 const JoditEditor = dynamic(() => import("jodit-react"), {
   ssr: false,
@@ -74,7 +75,8 @@ export default function TextEditor({
         value={initialData}
         config={config}
         onBlur={(value) => {
-          onChange(value);
+          const cleanedValue = cleanEmptyHtml(value);
+          onChange(cleanedValue);
         }}
       />
     </Box>

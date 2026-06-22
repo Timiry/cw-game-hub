@@ -12,10 +12,11 @@ import { UserMenu } from "./ProfileMenu";
 import { useTranslations } from "next-intl";
 import { useSnackbar } from "@/entities/app-state";
 import { Button } from "@cw-game/react-ui";
+import Skeleton from "@mui/material/Skeleton";
 
 export default function Header() {
   const router = useRouter();
-  const { data: profile } = useCurrentUserProfile();
+  const { data: profile, isLoading } = useCurrentUserProfile();
   const logoutMutation = useLogout();
   const t = useTranslations("Header");
   const [openSnackbar] = useSnackbar();
@@ -44,19 +45,28 @@ export default function Header() {
       >
         <Image src="/logo.svg" alt="CW Game logo" fill />
       </Box>
-      <Box>
+      <Box display="flex" alignItems="center" gap={1}>
         <LanguageToggle />
-        {profile ? (
-          <UserMenu
-            avatarUrl={profile?.photo}
-            userName={profile?.name}
-            onLogout={onLogout}
-          />
-        ) : (
-          <Button onClick={() => router.push(routes.login)}>
-            {t("signIn")}
-          </Button>
-        )}
+        <Box height={36}>
+          {isLoading ? (
+            <Skeleton
+              variant="rounded"
+              width={36}
+              height={36}
+              animation="wave"
+            />
+          ) : profile ? (
+            <UserMenu
+              avatarUrl={profile?.photo}
+              userName={profile?.name}
+              onLogout={onLogout}
+            />
+          ) : (
+            <Button onClick={() => router.push(routes.login)}>
+              {t("signIn")}
+            </Button>
+          )}
+        </Box>
       </Box>
     </StyledHeader>
   );

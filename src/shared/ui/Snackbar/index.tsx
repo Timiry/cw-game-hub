@@ -17,6 +17,7 @@ const Snackbar = observer(() => {
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
       autoHideDuration={4000}
       onClose={close}
+      sx={{ top: 75 }}
     >
       <Alert
         onClose={close}
@@ -33,7 +34,7 @@ const Snackbar = observer(() => {
             </Button>
           )
         }
-        sx={{ width: { mobile: "100%", desktop: "368px" }, mt: "75px" }}
+        sx={{ width: { mobile: "100%", desktop: "368px" } }}
       >
         {store.snackbar.message}
       </Alert>

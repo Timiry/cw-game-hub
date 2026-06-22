@@ -37,6 +37,7 @@ export const AvatarWithGiftSettings = ({
   const [openSnackbar] = useSnackbar();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   const uploadProfilePhotoMutation = useUploadProfilePhoto();
 
@@ -88,15 +89,7 @@ export const AvatarWithGiftSettings = ({
   };
 
   return (
-    <AvatarContainer
-      m={{ mobile: "0 auto", desktop: "0 30px 0 70px" }}
-      sx={{
-        cursor: isUploading ? "wait" : "pointer",
-        "&:hover .upload-overlay": {
-          opacity: 1,
-        },
-      }}
-    >
+    <AvatarContainer m={{ mobile: "0 auto", desktop: "0 30px 0 70px" }}>
       <input
         ref={fileInputRef}
         type="file"
@@ -106,18 +99,33 @@ export const AvatarWithGiftSettings = ({
         disabled={isUploading}
       />
 
-      <Avatar
-        src={profile?.photo || "/avatar-fallback.svg"}
-        alt={profile?.name}
-        variant="rounded"
+      <Box
+        onClick={handleAvatarClick}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
         sx={{
           width: "100%",
           height: "100%",
+          cursor: isUploading ? "wait" : "pointer",
         }}
-        onClick={handleAvatarClick}
-      />
+      >
+        <Avatar
+          src={profile?.photo || "/avatar-fallback.svg"}
+          alt={profile?.name}
+          variant="rounded"
+          sx={{
+            width: "100%",
+            height: "100%",
+            pointerEvents: "none",
+          }}
+        />
+      </Box>
 
-      <UploadOverlay className="upload-overlay">
+      <UploadOverlay
+        sx={{
+          opacity: isHovering ? 1 : 0,
+        }}
+      >
         {isUploading ? (
           <CircularProgress />
         ) : (

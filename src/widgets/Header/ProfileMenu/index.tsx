@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import routes from "@/shared/config/routes";
 import { useTranslations } from "next-intl";
 import { Typography } from "@cw-game/react-ui";
+import Box from "@mui/material/Box";
 
 interface UserMenuProps {
   avatarUrl?: string;
@@ -45,8 +46,8 @@ export const UserMenu = ({ avatarUrl, userName, onLogout }: UserMenuProps) => {
   };
 
   return (
-    <>
-      <IconButton onClick={handleClick} size="small">
+    <Box>
+      <IconButton onClick={handleClick} size="small" sx={{ p: 0 }}>
         <Avatar
           src={avatarUrl || "/avatar-fallback.svg"}
           alt={userName || t("nameFallback")}
@@ -88,6 +89,6 @@ export const UserMenu = ({ avatarUrl, userName, onLogout }: UserMenuProps) => {
           <ListItemText>{t("signOut")}</ListItemText>
         </MenuItem>
       </Menu>
-    </>
+    </Box>
   );
 };
