@@ -14,7 +14,7 @@ export const createUpdateUserProfileSchema = (t: TranslateFn) =>
 
     contacts: z.array(createContactSchema(t)),
 
-    aboutMe: z.string().max(2000, t("aboutMeTooLong")).nullable(),
+    aboutMe: z.string().max(10000, t("aboutMeTooLong")).nullable(),
 
     visitedWorldsHidden: z.boolean(),
 
