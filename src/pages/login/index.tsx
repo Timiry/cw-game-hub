@@ -38,6 +38,7 @@ interface LoginFormValues {
 export const LoginPage = () => {
   const t = useTranslations("LoginPage");
   const router = useRouter();
+  const routerRef = useRef(router);
   const [openSnackbar] = useSnackbar();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -64,13 +65,41 @@ export const LoginPage = () => {
 
     paramsHasSentRef.current = true;
     vkLoginQuery(searchParams)
-      .then(() => router.push(routes.serverList))
+      .then(() => {
+        if (window.opener) {
+          postSuccessAuthMessage({});
+        } else {
+          router.push(routes.serverList);
+        }
+      })
       .catch((err) => {
         openSnackbar({
           message: t("genericError") + " " + (err as Error)?.toString?.(),
         });
       });
   }, [searchParams, vkLoginQuery, router, openSnackbar, t]);
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== window.location.origin) {
+        return;
+      }
+
+      if (event.data.status === "authorization_success") {
+        if (window.opener) {
+          postSuccessAuthMessage({});
+        } else {
+          routerRef.current.push(routes.serverList);
+        }
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
 
   const handleTelegramLogin = async (data: unknown) => {
     const user = await login({ telegram: data });
