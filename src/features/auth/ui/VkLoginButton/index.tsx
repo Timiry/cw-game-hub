@@ -19,7 +19,11 @@ export const VkLoginButton = () => {
         cursor: "pointer",
       }}
       onClick={() => {
-        window.open("https://accounts.cw-game.ru/v1/login/vk", "_blank");
+        window.open(
+          "https://accounts.cw-game.ru/v1/login/vk",
+          "_blank",
+          "scrollbars=yes,resizable=yes"
+        );
       }}
     >
       <VkIcon width="20px" height="20px" fill="#ffffff" />

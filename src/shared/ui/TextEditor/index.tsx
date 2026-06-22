@@ -41,6 +41,7 @@ export default function TextEditor({
         "table",
         "symbols",
         "image",
+        "link",
         "|",
         "indent",
         "outdent",

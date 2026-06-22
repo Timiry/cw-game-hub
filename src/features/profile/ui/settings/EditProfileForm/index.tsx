@@ -163,6 +163,11 @@ export const EditProfileForm = ({
           initialData={initialData.aboutMe || ""}
           onChange={(data: string) => setValue("aboutMe", data)}
         />
+        {errors.aboutMe && (
+          <Typography variant="caption" color="error" pt={1}>
+            {errors.aboutMe.message}
+          </Typography>
+        )}
       </Box>
 
       <Box>
