@@ -73,10 +73,12 @@ export const AvatarWithGifts = ({
       <Avatar
         src={profile.photo || "/avatar-fallback.svg"}
         alt={profile.name}
+        title=""
         variant="rounded"
         sx={{
           width: "100%",
           height: "100%",
+          pointerEvents: "none",
         }}
       />
 

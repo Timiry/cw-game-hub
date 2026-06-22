@@ -2,10 +2,10 @@ import { z } from "zod";
 
 type TranslateFn = (key: string) => string;
 
-const VK_URL_REGEX = /^https?:\/\/(www\.|m\.)?vk\.com\/(.+)$/;
-const VK_USERNAME_REGEX = /^[a-zA-Z0-9._]{5,32}$/;
+const VK_URL_REGEX = /^https?:\/\/(www\.|m\.)?vk\.(com|ru)\/(.+)$/;
+const VK_USERNAME_REGEX = /^[a-zA-Z0-9._]{1,32}$/;
 const TELEGRAM_URL_REGEX = /^https?:\/\/(t\.me|telegram\.me)\/(.+)$/;
-const TELEGRAM_USERNAME_REGEX = /^[a-zA-Z0-9_]{5,32}$/;
+const TELEGRAM_USERNAME_REGEX = /^[a-zA-Z0-9_]{1,32}$/;
 
 export const createVkLinkSchema = (t: TranslateFn) =>
   z.string().refine(

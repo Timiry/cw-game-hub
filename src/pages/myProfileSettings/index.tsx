@@ -47,7 +47,7 @@ const UserProfilePage = () => {
     <Box
       display="flex"
       flexDirection={{ mobile: "column", desktop: "row" }}
-      mt="71px"
+      mt="65px"
     >
       <SettingsSidebar
         activeSection={activeSection}

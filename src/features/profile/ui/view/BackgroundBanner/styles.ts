@@ -11,7 +11,7 @@ export const BackgroundBannerContainer = styled(
   width: "100%",
   aspectRatio: "6 / 1",
   position: "relative",
-  marginTop: "68px",
+  marginTop: "65px",
 
   "&::before": {
     content: '""',

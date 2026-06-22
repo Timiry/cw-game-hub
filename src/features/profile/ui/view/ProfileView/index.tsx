@@ -16,6 +16,7 @@ import { Quote } from "./styles";
 import { format } from "date-fns";
 import SettingsButton from "../SettingsButton";
 import SafeHtml from "@/shared/ui/SafeHtml";
+import { cleanEmptyHtml } from "@/shared/lib/html/cleamEmptyHtml";
 
 interface ProfileViewProps {
   profile: UserProfile;
@@ -25,6 +26,8 @@ interface ProfileViewProps {
 const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
   const t = useTranslations("ProfilePage");
   const locale = useLocale();
+
+  const cleanedAbouMe = cleanEmptyHtml(profile.aboutMe || "");
 
   return (
     <Box>
@@ -64,7 +67,7 @@ const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
             )}
           </Box>
 
-          <Box>{isProfileMine && <SettingsButton />}</Box>
+          <Box mt={1}>{isProfileMine && <SettingsButton />}</Box>
         </Stack>
 
         <Stack direction={{ mobile: "column", desktop: "row-reverse" }}>
@@ -100,13 +103,13 @@ const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
 
             <Divider sx={{ mb: 3 }} />
 
-            {profile.aboutMe && (
+            {cleanedAbouMe && (
               <Box mb={3}>
                 <Typography variant="h5" gutterBottom>
                   {t("aboutMe")}
                 </Typography>
                 <Paper component={Box} p={3}>
-                  <SafeHtml html={profile.aboutMe} />
+                  <SafeHtml html={cleanedAbouMe} />
                 </Paper>
               </Box>
             )}
