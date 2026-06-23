@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import { useStore } from "@/entities/app-state";
 import { Container } from "./styles";
 import { useTranslations } from "next-intl";
+import { normalizeUrl } from "../../lib/normalizeUrl";
 
 interface AddLocalServerProps {
   open: boolean;
@@ -22,7 +23,12 @@ const AddLocalServer = ({ open, onClose }: AddLocalServerProps) => {
 
   const addServer = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    store.addLocalServer(value);
+
+    const normalizedValue = normalizeUrl(value);
+    if (!normalizedValue) return;
+
+    store.addLocalServer(normalizedValue);
+    setValue("");
     onClose();
   };
 
@@ -48,7 +54,14 @@ const AddLocalServer = ({ open, onClose }: AddLocalServerProps) => {
                 {t("addButton")}
               </Button>
               <Box width="4px" />
-              <Button variant="text" size="small" onClick={onClose}>
+              <Button
+                variant="text"
+                size="small"
+                onClick={() => {
+                  setValue("");
+                  onClose();
+                }}
+              >
                 {t("cancelButton")}
               </Button>
             </Grid>
