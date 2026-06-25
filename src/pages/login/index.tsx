@@ -27,8 +27,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import TextField from "@mui/material/TextField";
 import { VkLoginButton } from "@/features/auth/ui/VkLoginButton";
 import { useSearchParams } from "next/navigation";
-import { useMutation } from "@tanstack/react-query";
-import AuthService from "@/features/auth/api/AuthService";
+import useVkLogin from "@/features/auth/lib/hooks/useVkLogin";
 
 interface LoginFormValues {
   email: string;
@@ -52,9 +51,7 @@ export const LoginPage = () => {
   });
 
   const { isPending: isVkLoginPending, mutateAsync: vkLoginQuery } =
-    useMutation({
-      mutationFn: AuthService.vkLogin,
-    });
+    useVkLogin();
   const { isPending: isLoginPending, mutateAsync: login } = useLogin();
 
   const paramsHasSentRef = useRef(false);
