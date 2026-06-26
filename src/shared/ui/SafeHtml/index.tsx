@@ -8,7 +8,6 @@ const SafeHtml = ({ html }: { html: string }) => {
 
   return (
     <Box
-      className="rich-text-content"
       sx={{
         "& a": { color: "primary.main" },
         "& img": { maxWidth: "100%", height: "auto" },
