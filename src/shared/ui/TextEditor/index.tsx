@@ -9,15 +9,12 @@ const JoditEditor = dynamic(() => import("jodit-react"), {
   ssr: false,
 });
 
-interface EditLessonFormProps {
+interface TextEditorProps {
   initialData: string;
   onChange: (data: string) => void;
 }
 
-export default function TextEditor({
-  initialData,
-  onChange,
-}: EditLessonFormProps) {
+export default function TextEditor({ initialData, onChange }: TextEditorProps) {
   const editor = useRef(null);
   const locale = useLocale();
 
@@ -63,6 +60,11 @@ export default function TextEditor({
         wordBreak: "break-word",
         whiteSpace: "normal",
         backgroundColor: "#161D21",
+      },
+
+      link: {
+        noFollowCheckbox: false,
+        openInNewTabCheckbox: false,
       },
     }),
     [locale]
