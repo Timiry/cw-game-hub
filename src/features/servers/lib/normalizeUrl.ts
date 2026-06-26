@@ -5,6 +5,8 @@ export const normalizeUrl = (url: string): string => {
 
   normalized = normalized.replace(/[./]+$/, "");
 
+  if (normalized.startsWith("http://127.0.0.1")) return normalized;
+
   if (normalized.startsWith("http://")) {
     normalized = "https://" + normalized.slice(7);
   } else if (!normalized.startsWith("https://")) {
