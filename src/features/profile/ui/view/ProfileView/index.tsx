@@ -71,7 +71,7 @@ const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
         </Stack>
 
         <Stack direction={{ mobile: "column", desktop: "row-reverse" }}>
-          <Box flex={1}>
+          <Box flex={1} minWidth={0}>
             {profile.quote && <Quote>{profile.quote}</Quote>}
 
             <Stack
@@ -103,13 +103,13 @@ const ProfileView = ({ profile, isProfileMine }: ProfileViewProps) => {
 
             <Divider sx={{ mb: 3 }} />
 
-            {cleanedAbouMe && (
-              <Box mb={3}>
+            {profile.aboutMe && cleanedAbouMe && (
+              <Box mb={3} minWidth={0}>
                 <Typography variant="h5" gutterBottom>
                   {t("aboutMe")}
                 </Typography>
-                <Paper component={Box} p={3}>
-                  <SafeHtml html={cleanedAbouMe} />
+                <Paper component={Box} p={3} overflow="auto" maxWidth="100%">
+                  <SafeHtml html={profile.aboutMe} />
                 </Paper>
               </Box>
             )}

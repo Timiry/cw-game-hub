@@ -4,21 +4,17 @@ import { useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import Box from "@mui/material/Box";
 import { useLocale } from "next-intl";
-import { cleanEmptyHtml } from "@/shared/lib/html/cleamEmptyHtml";
 
 const JoditEditor = dynamic(() => import("jodit-react"), {
   ssr: false,
 });
 
-interface EditLessonFormProps {
+interface TextEditorProps {
   initialData: string;
   onChange: (data: string) => void;
 }
 
-export default function TextEditor({
-  initialData,
-  onChange,
-}: EditLessonFormProps) {
+export default function TextEditor({ initialData, onChange }: TextEditorProps) {
   const editor = useRef(null);
   const locale = useLocale();
 
@@ -65,6 +61,11 @@ export default function TextEditor({
         whiteSpace: "normal",
         backgroundColor: "#161D21",
       },
+
+      link: {
+        noFollowCheckbox: false,
+        openInNewTabCheckbox: false,
+      },
     }),
     [locale]
   );
@@ -76,8 +77,7 @@ export default function TextEditor({
         value={initialData}
         config={config}
         onBlur={(value) => {
-          const cleanedValue = cleanEmptyHtml(value);
-          onChange(cleanedValue);
+          onChange(value);
         }}
       />
     </Box>
