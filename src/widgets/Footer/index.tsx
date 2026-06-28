@@ -15,12 +15,15 @@ import {
   StyledTiktokIcon,
   StyledVkIcon,
 } from "./styles";
+import { Link } from "@cw-game/react-ui";
+import routes from "@/shared/config/routes";
+import NextLink from "next/link";
 
 export default function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <Box width="80%" m="0 auto 30px">
+    <Box width="80%" maxWidth="1200px" m="0 auto 30px">
       <Divider />
       <Box
         display={"flex"}
@@ -29,13 +32,15 @@ export default function Footer() {
         mb={3}
       >
         <Stack
-          direction={"row"}
-          spacing={3}
+          direction={{ mobile: "column", desktop: "row" }}
+          gap={3}
           alignItems={"center"}
-          height={"100px"}
-          flexWrap={"wrap"}
         >
-          <Typography variant="subtitle1" textTransform={"uppercase"}>
+          <Typography
+            variant="subtitle1"
+            textTransform={"uppercase"}
+            mt={{ mobile: 3, desktop: 0 }}
+          >
             {t("findUs")}
           </Typography>
           <ExternalLink href="https://t.me/cats_world_game">
@@ -52,8 +57,16 @@ export default function Footer() {
           </ExternalLink>
         </Stack>
 
-        <Stack direction={"row"} alignItems={"center"} flexWrap={"wrap"}>
-          <Typography variant="subtitle1" textTransform={"uppercase"} pr={1}>
+        <Stack
+          direction={{ mobile: "column", desktop: "row" }}
+          alignItems={"center"}
+        >
+          <Typography
+            variant="subtitle1"
+            textTransform={"uppercase"}
+            pr={1}
+            mt={{ mobile: 3, desktop: 0 }}
+          >
             {t("poweredBy")}
           </Typography>
           <ExternalLink href="https://pixijs.com/">
@@ -67,6 +80,22 @@ export default function Footer() {
           </ExternalLink>
         </Stack>
       </Box>
+
+      <Stack
+        direction={{ mobile: "column", tablet: "row" }}
+        alignItems={"center"}
+        justifyContent={"center"}
+        flexWrap={"wrap"}
+        gap={2}
+        mb={2}
+      >
+        <Link component={NextLink} href={routes.legalTerms}>
+          {t("terms")}
+        </Link>
+        <Link component={NextLink} href={routes.legalPrivacy}>
+          {t("privacy")}
+        </Link>
+      </Stack>
 
       <Typography textAlign={"center"}>
         @ {new Date().getFullYear()} {t("footerText")}

@@ -25,7 +25,11 @@
     "passwordTooLong": "The password is too long. Use fewer characters",
     "invalidEmail": "Invalid email",
     "alreadyExistError": "The user with this email already exists. Log in with a password or restore it.",
-    "internalError": "Internal server error, please try again later."
+    "internalError": "Internal server error, please try again later.",
+    "agreePrefix": "I accept",
+    "termsOfService": "the terms of service",
+    "and": "and",
+    "privacyPolicy": "the privacy policy"
   },
   "ConfirmEmailPage": {
     "title": "Email Confirmation",
@@ -107,7 +111,9 @@
   "Footer": {
     "findUs": "Find us",
     "footerText": "CW Game. A labour of love by the CW Game team and all who care.",
-    "poweredBy": "Powered by"
+    "poweredBy": "Powered by",
+    "terms": "Terms of service",
+    "privacy": "Privacy policy"
   },
     "Header": {
     "signIn": "Sign in",
@@ -171,5 +177,10 @@
     "invalidUrl": "Invalid URL",
     "invalidVkLink": "Invalid VK profile link",
     "invalidTelegramLink": "Invalid Telegram profile link"
+  },
+  "LegalPage": {
+    "legalDocs": "Legal documents",
+    "terms": "Terms of service",
+    "privacy": "Privacy policy"
   }
 }
