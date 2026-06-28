@@ -6,8 +6,11 @@ const routes = {
   register: "/register",
   resetPassword: "/reset-password",
   myProfile: "/profile",
-  myProfileSettings: "profile/settings",
+  myProfileSettings: "/profile/settings",
   userProfile: (id: number) => `/profile/${id}`,
+  legal: "/legal",
+  legalTerms: "/legal/terms",
+  legalPrivacy: "/legal/privacy",
 };
 
 export default routes;
