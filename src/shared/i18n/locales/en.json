@@ -181,7 +181,6 @@
   "LegalPage": {
     "legalDocs": "Legal documents",
     "terms": "Terms of service",
-    "privacy": "Privacy policy",
-    "toLegalDocsButton": "To the list of legal documents"
+    "privacy": "Privacy policy"
   }
 }
