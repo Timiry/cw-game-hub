@@ -11,6 +11,8 @@ const SafeHtml = ({ html }: { html: string }) => {
       sx={{
         "& a": { color: "primary.main" },
         "& img": { maxWidth: "100%", height: "auto" },
+        "& details": { margin: "10px" },
+        "& summary": { cursor: "pointer" },
       }}
       dangerouslySetInnerHTML={{ __html: sanitized }}
     />
