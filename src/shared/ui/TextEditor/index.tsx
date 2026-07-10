@@ -3,7 +3,8 @@
 import { useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import Box from "@mui/material/Box";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import type { Jodit } from "jodit";
 
 const JoditEditor = dynamic(() => import("jodit-react"), {
   ssr: false,
@@ -17,10 +18,23 @@ interface TextEditorProps {
 export default function TextEditor({ initialData, onChange }: TextEditorProps) {
   const editor = useRef(null);
   const locale = useLocale();
+  const t = useTranslations("TextEditor");
 
   const config = useMemo(
     () => ({
       readonly: false,
+      controls: {
+        spoiler: {
+          name: "spoiler",
+          icon: "chevron",
+          tooltip: t("spoilerTooltip"),
+          exec: function (editor: Jodit) {
+            const selectedText = editor.s?.html || t("detailsText");
+            const html = `<details style="margin: 10px" open><summary style="cursor: pointer"><div style="display: inline; margin: 0; padding: 0">${t("summaryText")}</div></summary><p>${selectedText}</p></details>`;
+            editor.s.insertHTML(html);
+          },
+        },
+      },
       buttons: [
         "bold",
         "italic",
@@ -29,6 +43,7 @@ export default function TextEditor({ initialData, onChange }: TextEditorProps) {
         "eraser",
         "brush",
         "|",
+        "spoiler",
         "ul",
         "ol",
         "|",
@@ -67,7 +82,7 @@ export default function TextEditor({ initialData, onChange }: TextEditorProps) {
         openInNewTabCheckbox: false,
       },
     }),
-    [locale]
+    [locale, t]
   );
 
   return (

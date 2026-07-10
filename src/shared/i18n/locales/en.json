@@ -182,5 +182,10 @@
     "legalDocs": "Legal documents",
     "terms": "Terms of service",
     "privacy": "Privacy policy"
+  },
+  "TextEditor": {
+    "spoilerTooltip": "Insert drop-down block",
+    "summaryText": "Click to expand",
+    "detailsText": "Text inside the drop-down block"
   }
 }
